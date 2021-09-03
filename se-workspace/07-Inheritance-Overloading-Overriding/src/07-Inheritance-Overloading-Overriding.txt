@@ -1,0 +1,71 @@
+**7ÀÏÂ÷ ÁÖ¿ä¸ñÂ÷**
+ - Array
+ - Overriding
+ - Inheritance
+ 	is a relationship
+ 	extends
+ 	overriding
+ 	super
+ - Polymorphism
+ 
+ ----------------------------------
+ 
+ - Array ¹è¿­: ´Ù¼öÀÇ µ¥ÀÌÅÍ¸¦ È¿°úÀûÀ¸·Î °ü¸®ÇÏ±â À§ÇÑ °´Ã¼
+ 	ÂüÁ¶Çü µ¥ÀÌÅÍ¸¦ ÀúÀåÇÏ´Â ¹è¿­
+ 	how?
+ 	1. ¹è¿­ ¼±¾ğ Person [] p; // p´Â ¹è¿­ °´Ã¼¸¦ Å½Á¶ÇÏ´Â º¯¼ö, µ¥ÀÌÅÍ Å¸ÀÔÀº Person[] ¹è¿­ Å¸ÀÔ
+ 	2. ¹è¿­ »ı¼º p = new Person[3]; //length 3 ¹è¿­À» »ı¼º
+ 	3. ¹è¿­ ¿ä¼Ò¿¡ Á¤º¸¸¦ ÇÒ´ç p[0] = new Person("¾ÆÀÌÀ¯", 30);
+ 	
+ 	1, 2, 3 ¹è¿­ ¼±¾ğ »ı¼º ÇÒ´çÀ» µ¿½Ã¿¡
+ 	Person [] p = {new Person("¾ÆÀÌÀ¯", 30), new Person("ÀÌ°­ÀÎ", 20)}; // 2°³ ¿ä¼Ò¸¦ ÀúÀåÇÑ ¹è¿­ »ı¼º
+ 	
+ - Overloading: µ¿ÀÏÇÑ ÀÌ¸§À¸·Î ´Ù¾çÇÑ ¸Å°³º¯¼ö parameter¸¦ Á¤ÀÇ
+ 				-> ÀÎÅÍÆäÀÌ½º¸¦ °£°áÇÏ°Ô ÇÏ¿© »ç¿ëÀÚ(client system or client code)ÀÇ ÆíÀÇ¼º Áõ´ë(»ç·Ê: java se API: System.out.println() ¸Ş¼Òµå)
+ 	1) ¸Ş¼Òµå ¿À¹ö·Îµù
+ 		ex) public void eat() {}
+ 			public void eat(String menu) {} // ¿À¹ö·Îµù
+ 			public void eat(int count) {} // ¿À¹ö·Îµù
+ 			public void eat(String menu, int count) {} // ¿À¹ö·Îµù
+ 	2) »ı¼ºÀÚ ¿À¹ö·Îµù
+ 		ex)
+ 			public Person(){}
+ 			public Person(String name){} // »ı¼ºÀÚ ¿À¹ö·Îµù
+  			public Person(String name, int salary){} // »ı¼ºÀÚ ¿À¹ö·Îµù
+  			
+ - Inheritance
+ 	°´Ã¼ÁöÇâ ÁÖ¿ä °³³ä: Encapsulation, Inheritance, Polymorphism
+ 	
+ 	Inheritance(»ó¼Ó): ºÎ¸ğ(super class) ¸â¹ö(ÀÎ½ºÅÏ½º º¯¼ö, ¸Ş¼Òµå)¸¦ ¹°·Á¹Ş¾Æ ÀÚ½Ä(sub class)ÀÌ Àç»ç¿ë
+ 					  °èÃş ±¸Á¶ Çü¼ºÀ» ÅëÇÑ ´ÙÇü¼º(Polymorphism) Àû¿ë È¯°æ -> ÀÌÈÄ °øºÎ ¿¹Á¤
+ 					  
+ 	is a relationship: »ç¶÷Àº µ¿¹°ÀÌ´Ù. °³´Â µ¿¹°ÀÌ´Ù. °í¾çÀÌ´Â µ¿¹°ÀÌ´Ù.
+ 					   ¸Å´ÏÀú´Â »ç¿øÀÌ´Ù. ¿£Áö´Ï¾î´Â »ç¿øÀÌ´Ù. ºñ¼­´Â »ç¿øÀÌ´Ù.
+ 					   UMLÀÇ Class Diagram¿¡¼­´Â generalizationÀ¸·Î is a °ü°è¸¦ Ç¥ÇöÇÑ´Ù.
+ 	
+ 	extends: »ó¼Ó¹ŞÀ» ¶§ »ç¿ëÇÏ´Â ÀÚ¹Ù Å°¿öµå
+ 			 ÀÚ½ÄÅ¬·¡½º(sub class) extends ºÎ¸ğÅ¬·¡½º(super class)
+ 			 ex) public class Person extends Animal{}
+ 			 
+ 	protected Access Modifier: ÆĞÅ°Áö ³»¿¡¼­ Á¢±Ù °¡´É, ´Ü »ó¼Ó°ü°è¿¡¼­´Â ´Ù¸¥ ÆĞÅ°Áö¿¡¼­ Á¢±Ù °¡´É
+ 	Âü°í) public > protected > default > private
+ 	
+ 	super: ºÎ¸ğ¸¦ °¡¸£±â´Â ÀÚ¹Ù Å°¿öµå(¿¹¾à¾î)
+ 		1) super.¸â¹ö(º¯¼ö ¹× ¸Ş¼Òµå) -> ºÎ¸ğÀÇ ¸â¹ö¿¡ Á¢±Ù
+ 		2) super() -> ºÎ¸ğ »ı¼ºÀÚ¸¦ È£­„ÇØ¼­ ºÎ¸ğ °´Ã¼¸¦ »ı¼º
+ 		   super()´Â »ı¼ºÀÚ Ã¹ ¶óÀÎ¿¡ À§Ä¡, ºÎ¸ğ »ı¼ºÀÚ¸¦ È£ÃâÇÏ¿© ºÎ¸ğ °´Ã¼¸¦ »ı¼ºÇÏ°Ô ÇÑ´Ù.
+ 		   ¸¸¾à ¸í½ÃÇÏÁö ¾ÊÀ¸¸é ÀÚµ¿À¸·Î »ğÀÔ
+ 		   ÀÚ½Ä °´Ã¼ »ı¼ºÇÏ¸é ºÎ¸ğ °´Ã¼°¡ ÇÔ²² »ı¼ºµÇ¾î ¸Ş¸ğ¸®¿¡ ÀûÀçµÇ°í ÀÌ¸¦ »ç¿ëÇÒ ¼ö ÀÖ´Â ¿ø¸®´Â
+ 		   »ı¼ºÀÚ¿¡ super()°¡ Àû¿ëµÇ±â ¶§¹®ÀÌ´Ù.
+ 		   
+ 		   ÀÚ½Ä °´Ã¼¸¦ »ı¼ºÇÏ¸é ÀÚ½Ä °´Ã¼ÀÇ »ı¼ºÀÚ Ã¹ ¶óÀÎ¿¡ ¹èÄ¡µÇ´Â super()¿¡ ÀÇÇØ
+ 		   ºÎ¸ğ -> ÀÚ½Ä ¼øÀ¸·Î °´Ã¼°¡ »ı¼ºµÈ´Ù.
+ 		   
+**8ÀÏÂ÷ ÁÖ¿ä¸ñÂ÷**
+	review
+	single inheritance
+ 	overriding
+ 	java.lang.Object
+ 	Polymorphism
+ 	Object Casting
+ 	
