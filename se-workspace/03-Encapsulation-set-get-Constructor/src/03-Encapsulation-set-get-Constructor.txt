@@ -1,0 +1,163 @@
+**3일차 주요목차**
+- review 
+- Object Oriented Concept 객체지향개념 중 Encapsulation 
+- access modifier 접근 제어자 중 public , default , private 
+- setter/getter method 
+- Constructor 생성자 
+- UML 중 Class Diagram 연습 ( tool : staruml ) 
+---------------------------------------------------
+- review 
+jdk>jre>jvm
+
+jvm -> java virtual machine : interpreter 통역자 역할과 자동 메모리 관리 ( GC, Garbage Collector :쓰레기 수집기 ) 
+
+SDLC 소프트웨어 개발 수명 주기 ( 개발단계 )
+요구분석 -> 설계 -> 구현 -> 테스트 -> 운영 
+
+마일스톤(milestone) : 사전적 의미는 이정표 , 프로젝트를 완수하기 위한 주요 진행 단계 
+
+소프트웨어 개발 방법론 
+폭포수모델waterfall , 애자일모델 agile 
+
+TDD : Test Driven Development 테스트 주도 개발 
+
+
+객체지향/Object-Oriented/OOAD(Object Oriented Analysis & Design) 
+
+Object 객체와 Class 클래스 : 붕어빵과 붕어빵틀 , 건물과 설계도 
+
+Object의 구성요소 : 속성 ( attribute , variable ) 과 기능 ( operation , method ) 
+
+UML -> 통합 모델링 언어 Unified Modeling Language
+
+code review 
+main method -> 실행시 jvm이 해석하는 시작점 
+package -> 디렉토리별로 분류 
+class -> 객체 생성을 위한 틀 , 설계도 
+instance variable -> 객체 속성을 저장하기 위한 공간 
+method -> 객체의 기능을 정의 
+
+---------------------------------------------------------
+소프트웨어 공학 -> 좋은 설계의 지표 
+
+"High Cohesion, Low Coupling" 
+높은 응집도 , 낮은 결합도 
+
+응집도(Cohesion) : 모듈 내부의 역할에 집중하는 정도 
+결합도(Coupling) : 모듈 간의 상호 의존도 
+
+
+- Object Oriented Concept 객체지향개념 중 Encapsulation 
+  객체지향 주요개념 : Encapsulation(캡슐화) , Inheritance(상속) , Polymorphism(다형성)
+  Encapsulation -> 캡슐화   
+  					  "public interface , private implementation"
+  					  인터페이스는 공개하고 구현부는 은닉한다  
+  					  캡슐화는 인터페이스와 구현부를 분리해서 설계하고 개발한다 
+  					  
+  					  장점 
+  					  - 정보은닉 , 정보보호 
+  					  - 생산성 : 구현부를 몰라도 인터페이스만 이해하면 사용할 수 있다
+  					  	 참고 ) API : Application Programming Interface 
+  					  - 유지보수성 : 인터페이스로 소통하므로 내부 구현부가 업데이트 되어서 외부 영향이 최소화 
+  					  	 
+  - access modifier 접근 제어자 중 public , default , private 
+	java의 access modifier(접근 제어자) 는 총 4가지가 있다 
+	
+	public > protected > default > private 
+	
+	public : 다른 팩키지에서 접근 가능 ( 즉 어디서나 접근 가능하게 공개 ) 
+	protected : 같은 팩키지에서 접근 가능 , 단 상속관계에서는 다른 팩키지에서도 접근 가능 
+	default : 같은 팩키지내에서만 접근 가능 
+	private : 클래스 내에서만 접근 가능 ( 외부에 공개하지 않는다 )   					  
+
+   - method :  setter( set 메서드 ) , getter ( get 메서드 )
+     setter : set 메서드는 정보를 할당할 때 사용 
+     getter : get 메서드는 정보를 반환할 때 사용  
+     
+     코드 예 ) 
+     			// 인스턴스 변수 
+     			private String name; 
+     			//setter: 정보 할당을 위한 메서드  
+     			public void setName(String name){
+     			//인스턴스 변수 name과 매개변수 name을 구분하기 위해 this라는 자바 키워드를 이용 
+     			// this 는 현재 실행중인 객체를 가르킨다 즉 this.name은 인스턴스 변수이고 name 은 매개변수 
+     				this.name=name;
+     			}
+     			//getter: 정보 반환을 위한 메서드 
+     			public String getName(){
+     				return name;
+     			}
+
+- Constructor 생성자 
+	: Constructor ( 생성자 ) -> Object Value setting 
+	  객체 생성시 호출되는 영역 
+	  생성자는 필요한 객체 초기화 작업을 실행하기 위해 정의한다 
+	  ex) 신용카드 객체를 생성하기 위한 초기화 작업은 개인정보를 전달받아 신용도를 확인한 후 객체생성하여 발급해야 한다 
+	  
+	  특징 
+	  클래스 내부에 하나 이상의 생성자가 존재하지 않으면 자바 컴파일러가 컴파일시에 기본생성자를 삽입 
+	  만약 하나 이상의 생성자가 클래스에 존재하면 기본 생성자를 삽입하지 않는다 
+	  생성자 명은 클래스명과 동일해야 한다. 메서드와 다르게 리턴값,리턴타입은 존재하지 않는다 
+	  
+	  ex)  new Person() --- 생성자 호출하여 객체 생성 --->   class Person{ Person(){//생성자 실행완료 후 메모리에 객체 생성} }
+
+ - class 정의시 주요 구성요소 
+   package step1; // 1. 패키지 선언 : 클래스를 디렉토리별로 분류해 관리 
+   
+   import step2.Person; //2. import : 다른 패키지의 자원을 이용
+   
+   public class School{ //3. class : 객체 생성을 위한 설계도, 틀 
+   		//4. instance variable : 객체의 속성 정보를 저장
+   		private String name;
+   		//5. constructor : 객체의 초기화 작업을 담당 
+   		public School(){}
+   		//6. method : 객체의 기능을 정의 
+   		public void getStudentList(){}
+   
+   }
+
+**4일차 주요목차**
+- review 
+- java data type : primitive data type, reference data type 
+- 객체 초기화 단계 , java memory 
+- 제어문 
+   조건문 if , else if , else 
+   조건문 switch case 
+   
+   반복문 for , while , do while 
+ 
+ - Variable Scope 변수 범위 : instance variable , local variable  
+ - Object ( or Class) Relationship : use a , has a , consist of  relationship  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
