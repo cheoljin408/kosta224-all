@@ -1,0 +1,117 @@
+**2일차 주요목차**
+- Java SE 개발 환경설정 
+- Java 기본 소개 
+- Java 기본 프로그램 작성 및 실행 
+- 객체지향개념 ( 객체, 클래스 , 객체와 클래스의 관계 , 객체의 구성요소 )  
+- Java 기본 문법 ( 클래스 , 객체 , 변수 , 메서드 , 생성자 ) 
+----------------------------------------------------------
+- Java SE 개발 환경설정 : 1day 프로젝트의 JavaSE-환경설정.txt 에 정리되어 있음 
+   요약하면 jdk 설치 , ide 인 eclipse 를 설치 후 각각 설정 
+   jdk -> java development kit (자바 개발 도구) 중 java se jdk를 설치 후 설정 
+   ide -> 	통합 개발 환경(Integrated Development Environment, IDE) 인 eclipse 를 설치 후 설정 
+
+- Java 기본 소개 
+1. 객체 지향 언어 ( 이후 수업 예정 ) : Object Oriented Concept 이 적용된 프로그래밍 언어 
+2. 네트워킹을 위해 고안된 언어 : 홈네트워크(스마트홈)를 위해 1990년대 초반에 oak 라는 이름의 언어로 탄생 
+									  이후 라이센스 관련해 java 라는 이름으로 개명 
+3. 플랫폼 독립적 -> OS 별로 프로그램을 만들지 않아도 된다 ( OS 별로 JDK 를 제공 ) 
+					    한번 작성한 프로그램은 어떤 환경에서도 동일하게 동작한다 
+					    "Write Once, Run Anywhere"
+					  
+	JDK : Java Development Kit 자바 개발 도구 
+	JRE : Java Runtime Environment 자바 개발 환경  				  
+	JVM : Java Virtual Machine 자바 가상 기계 	( OS 와 Java Program 과의 통역자 역할 ) 				  
+	
+	JDK > JRE > JVM 
+	
+- Java 기본 프로그램 작성 및 실행 
+  개발자는 Hello.java 라는 프로그램을 작성 
+  command line 상에서 javac Hello.java 명령어를 입력하면  java 파일을 이용해 컴파일된 class 파일이 생성된다 ( 컴파일은 jvm 이 해석하기 위한 bytecode 즉 기계어로 만드는 작업을 말함 ) 
+  java Hello 라는 명령어로 class 파일을 실행하면 실행결과가 출력된다 
+  ( 위 과정을 ide 통합개발환경인 eclipse에서는 저장시에 컴파일되고 실행 단축키 ctrl + f11 로 class 를 실행한다 ) 		
+
+
+- 객체지향개념 ( 객체, 클래스 , 객체와 클래스의 관계 , 객체의 구성요소 )  
+객체지향(Object-Oriented) -> 
+              분석 설계 기법 중 하나 
+			  시스템의 기본 단위를 객체로 상정하고 
+			  객체와 객체의 관계를 중심으로 분석 설계하는 기법을 말한다 
+
+객체(Object) -> 시스템의 기본 단위 , 시스템을 구성하는 주요 사물이나 개념을 객체로 상정 
+					객체는 속성과 기능으로 구성된다 
+					속성 : variable (변수) , attribute 
+					기능 : method , operation 
+					
+					코드 예) Person p=new Person(); // 객체 생성 
+					
+클래스(Class) -> 객체(Object) 를 위한 틀 or 설계도 ( blueprint ) 
+					ex)  붕어빵틀(class)로부터 붕어빵(object)이 생성된다
+						  설계도(class)로부터 건물(object)이 생성된다 	
+						  	
+					코드 예)   class Person{ }	  	
+						  	
+변수 (variable) -> 정보를 저장하는 공간 (정보는 변경될 수 있다) 
+					  변수는 클래스 내부에서 정의되고 인스턴스 변수, 지역변수, 클래스변수등이 있다(이후 공부예정)
+					  
+					 코드 예) String name="아이유";  
+					  
+메서드(method) -> 객체의 기능을 정의 						  
+					  코드 예)   public void eat(){ }	  
+						  
+						  			
+
+"낯설음으로부터 시작해서 익숙해지는 과정"
+
+소프트웨어 개발 수명주기(Sofeware Development Life Cycle : SDLC) or 소프트웨어 개발 단계  
+: 요구사항 분석→설계→개발→테스트→운영(유지보수) 단계로 구성
+
+소프트웨어 개발 방법론 
+: 폭포수 모델(waterfall model)-> 단계별 완료 후 다음 단계 수행 , 애자일 모델 (agile model ) -> 반복,점증 
+
+TDD -> Test Driven Development의 약자로 '테스트 주도 개발'
+
+UML -> 통합 모델링 언어(Unified Modeling Language)
+		  분석 단계 UseCase Diagram 
+		  설계 단계 Class Diagram 
+UML 은 OOAD(Object Oriented Analysis & Design 객체 지향 분석 설계 )를 위한 표기 언어 
+
+
+**3일차 주요목차**
+- review 
+- Object Oriented Concept 객체지향개념 중 Encapsulation 
+- access modifier 접근 제어자 중 public , default , private 
+- setter/getter method 
+- Constructor 생성자 
+- UML 중 Class Diagram 연습 ( tool : staruml ) 
+- java Data Type ( primitive data type 과 reference data type ) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
