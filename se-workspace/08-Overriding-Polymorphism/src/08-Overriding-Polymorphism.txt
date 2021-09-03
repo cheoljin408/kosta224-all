@@ -1,0 +1,69 @@
+**8老瞒 林夸格瞒**
+	review
+	single inheritance
+ 	overriding
+ 	java.lang.Object
+ 	Polymorphism
+ 	Object Casting
+ --------------------------------------
+ - Inheritance
+ 	按眉瘤氢 林夸 俺充: Encapsulation, Inheritance, Polymorphism
+ 	
+ 	Inheritance(惑加): 何葛(super class) 糕滚(牢胶畔胶 函荐, 皋家靛)甫 拱妨罐酒 磊侥(sub class)捞 犁荤侩
+ 					  拌摸 备炼 屈己阑 烹茄 促屈己(Polymorphism) 利侩 券版 -> 捞饶 傍何 抗沥
+ 					  
+ 	is a relationship: 荤恩篮 悼拱捞促. 俺绰 悼拱捞促. 绊剧捞绰 悼拱捞促.
+ 					   概聪历绰 荤盔捞促. 浚瘤聪绢绰 荤盔捞促. 厚辑绰 荤盔捞促.
+ 					   UML狼 Class Diagram俊辑绰 generalization栏肺 is a 包拌甫 钎泅茄促.
+ 	
+ 	extends: 惑加罐阑 锭 荤侩窍绰 磊官 虐况靛
+ 			 磊侥努贰胶(sub class) extends 何葛努贰胶(super class)
+ 			 ex) public class Person extends Animal{}
+ 			 
+ 	protected Access Modifier: 菩虐瘤 郴俊辑 立辟 啊瓷, 窜 惑加包拌俊辑绰 促弗 菩虐瘤俊辑 立辟 啊瓷
+ 	曼绊) public > protected > default > private
+ 	
+ 	super: 何葛甫 啊福扁绰 磊官 虐况靛(抗距绢)
+ 		1) super.糕滚(函荐 棺 皋家靛) -> 何葛狼 糕滚俊 立辟
+ 		2) super() -> 何葛 积己磊甫 龋瓌秦辑 何葛 按眉甫 积己
+ 		   super()绰 积己磊 霉 扼牢俊 困摹, 何葛 积己磊甫 龋免窍咯 何葛 按眉甫 积己窍霸 茄促.
+ 		   父距 疙矫窍瘤 臼栏搁 磊悼栏肺 火涝
+ 		   磊侥 按眉 积己窍搁 何葛 按眉啊 窃膊 积己登绢 皋葛府俊 利犁登绊 捞甫 荤侩且 荐 乐绰 盔府绰
+ 		   积己磊俊 super()啊 利侩登扁 锭巩捞促.
+ 		   
+ 		   磊侥 按眉甫 积己窍搁 磊侥 按眉狼 积己磊 霉 扼牢俊 硅摹登绰 super()俊 狼秦
+ 		   何葛 -> 磊侥 鉴栏肺 按眉啊 积己等促.
+ 		   
+ - single inheritance
+ 	磊官绰 窜老 惑加阑 盲琶
+ 	磊官 牢磐其捞胶肺 促吝 惑加狼 厘痢阑 啊柳促.
+ 	-> 捞饶 傍何 抗沥: 磊官 牢磐其捞胶甫 捞侩窍搁 促吝惑加狼 厘痢牢
+ 				   促剧茄 拌摸 备炼 屈己阑 烹茄 促屈己(Polymorphism)阑 利侩且 荐 乐促.
+ 				   
+ - Overriding
+ 	皋家靛 坷滚扼捞爹: 何葛 皋家靛甫 磊脚俊 嘎霸 犁沥狼
+ 				  惑加罐篮 何葛 努贰胶狼 皋家靛甫 磊侥 按眉俊 舅嘎霸 备泅何甫 诀单捞飘秦辑 荤侩窍霸 窍绰 巴
+ 	坷滚扼捞爹 巩过: 立辟 力绢磊绰 窍困(磊侥) 努贰胶狼 皋家靛俊辑 歹 良酒瘤搁 救等促.
+ 				 府畔鸥涝, 皋家靛疙, 概俺函荐府胶飘绰 悼老秦具 茄促.
+ 				 捞饶 傍何抗沥) 惑困(何葛) 皋家靛俊辑 急攫茄 Exception 肚绰 弊 窍困 Exception父 throw 啊瓷窍促.
+ 				 
+ - java.lang.Object
+ 	葛电 磊官 努贰胶狼 弥惑困 努贰胶, 葛电 磊官 按眉绰 何葛肺结 Object甫 啊瘤霸 等促.
+ 	Class Object is the root of the class hierarchy. Every class has Object as a superclass.
+ 	
+ 	java.lang.Object俊 乐绰 葛电 扁瓷阑 磊官 努贰胶(or java Object)绰 惑加罐霸 等促.
+ 	鞘夸矫 Object俊 乐绰 皋家靛甫 坷滚扼捞爹秦辑 荤侩窍扁档 茄促.
+ 	
+ - Polymorphism
+ 	按眉瘤氢 林夸 俺充: Encapsulation, Inheritance, Polymorphism
+ 	
+ 	窍唱狼 皋技瘤 规侥栏肺 促剧茄 按眉甸捞 阿磊狼 规侥栏肺 悼累窍霸 窍绰 己龙
+ 	One Interface, Multiple Implements
+ 	窍唱狼 按眉啊 促剧茄 鸥涝狼 函荐肺 曼炼登绰 己龙
+ 	
+ 	促屈己(Polymorphism) 利侩阑 困秦辑绰 拌摸备炼(hierarchy) 屈己捞 鞘夸窍促
+ 	
+ 	磊侥 按眉绰 何葛 鸥涝狼 函荐肺 曼炼 瞪 荐 乐促
+ 	ex) Animal = new Person(); // 啊瓷
+ 		Object o = new Person(); // 啊瓷
+ - Object Casting
