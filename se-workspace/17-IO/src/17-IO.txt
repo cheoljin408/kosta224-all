@@ -1,0 +1,20 @@
+**17일차 주요목차**
+- IO 개념
+- 출력 스트림
+- 입력 스트림
+---------------------------
+IO: Input(입력), Output(출력)
+Stream: 사전적 의미는 줄기, 관(pipe line)
+		입출력을 위한 장치(파이프라인)
+		
+IO 계열의 4가지 Abstract class
+			1byte(바이트 스트림)	2byte(문자 스트림)
+	입력		InputStream			Reader
+	출력		OutputStream		Writer 
+	
+NodeStream 계열: 직접 Device(장치)에 연결되는 스트림, 필수적
+ProcessingStream 계열: 다양한 기능을 지원, NodeStream계열의 스트림을 필요로 한다
+
+**18일차 주요목차**
+- 객체 직렬화(Object Serialization)
+- Thread
