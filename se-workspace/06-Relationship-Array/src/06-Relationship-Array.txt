@@ -1,0 +1,50 @@
+**6일차 수업목차**
+ - Object ( or Class) Relationship : use a , has a , consist of  relationship
+ - Array(배열)
+ 	1. primitive data type을 저장하는 배열
+ 	2. reference data type을 저장하는 배열
+ - Overriding
+ - Inheritance
+ 	is a relationship
+ 	extends
+ 	overriding
+ 	super
+ 	
+--------------------------------------------------------------------
+
+ - Object ( or Class) Relationship : use a , has a , consist of  relationship
+ 	: association > aggregation > composition
+ 	
+ 	association(연관) -> use a 관계	예) 사람들이 렌트카를 이용하다.
+ 	aggregation(집합 or 집단화) -> has a 관계	예) 사람이 스마트폰을 가지고 있다.
+ 	composition(구성) -> consist of	예) 자동차가 엔진을 가지고 있다. 사람이 뇌를 가지고 있다.
+ 	
+  - Array(배열): 다수의 데이터를 효과적으로 관리하기 위해 사용
+  	1. primitive data type의 데이터를 저장하는 배열
+  		step1: 배열 선언	int [] age; or int age[]
+  		step2: 배열 생성	age = new int[3]; // 3개 공간이 있는 배열 객체 생성
+  		step3: 배열 요소를 할당	age[0] = 22;	age[1] = 24;	age[2] = 18; // 배열은 0부터 시작한다.
+  		
+  		age.length; -> 배열의 사이즈를 반환(3)
+  		
+  		// 배열 선언, 생성, 할당, 동시에
+		int price[] = {200, 300, 100, 2000, 1200}; // 배열 length 5인 객체를 생성하고 요소에 값을 할당
+	
+	2. reference data type의 데이터를 저장하는 배열
+		step1: 배열 선언	Person [] pa; or Person pa[];
+		step2: 배열 생성	pa = new Person[3];
+		step3: 배열 요소를 할당 pa[0] = new Person("아이유", 28);
+		
+		System.out.println(pa[0]); // Person 객체 주소값
+		System.out.println(pa[0].getName()); // 아이유
+		
+**7일차 주요목차**
+ - Array
+ - Overriding
+ - Inheritance
+ 	is a relationship
+ 	extends
+ 	overriding
+ 	super
+ - Polymorphism
+ 	
