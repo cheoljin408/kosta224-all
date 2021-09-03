@@ -1,0 +1,67 @@
+**10일차 주요목차**
+- static
+- final
+- abstract
+- interface
+- java.lang.String class
+- ploymorphism 연습문제
+---------------------------------------------------------
+- static: class의 member(variable, method)
+		  객체 생성없이 클래스 로딩만으로 메모리에 적재(meta space 영역에 저장)
+		  
+		  Java Memory
+		  Heap 영역: 객체의 instance Variable이 저장되는 영역
+		  Stack 영역: local variable이 저장되는 영역
+		  Meta Space 영역: class의 meta data가 저장되는 영역, static member가 저장
+		  
+		  Java Program 실행단계
+		  1. compile된 class 실행
+		  2. Class Loader가 Class Loading -> meta space에 class meta data 정보를 메모리에 적재(static)
+		  3. class 검증단계
+		  4. 실행단계
+		  	 main 실행
+		  	 필요시 동적으로 객체 생성 -> heap 영역에 객체 정보 저장, stack영역에 지역변수 저장
+		  	 
+		  - static 접근 관련
+		  
+		  non-static				static
+		  				------->
+		  				직접 접근 가능
+		  				<-------
+		  				직접 접근 불가, 반드시 객체 생성을 필요로 한다
+		  				
+- final
+	final 상수: 한번 할당되면 재할당 불가, 상수명은 대문자로 구성되고 합성어는 underscore _로 연결
+	ex) private final String ADMIN_ID = "java";
+	
+	final 메소드: 자식 클래스에서 오버라이딩 불가
+	
+	final 클래스: subclassing 불가(상속 불가)
+	
+- abstract: 추상 클래스 또는 추상 메소드 선언시 사용하는 자바 키워드
+	1. abstract class -> 부모 클래스의 역할에 집중, 자신은 new로 직접 객체화 될 수 없지만 자식 클래스를 통해 멤버를 물려준다
+		추상 클래스는 직접 객체화 될 수 없다
+		ex) public abstract class Animal {}
+			--------------------------------
+			Animal a = new Animal(); // compile error -> abstract class 는 new 클래스명() 즉 객체 생성 불가
+		
+		단, 상속을 통한 자식 객체에서 super()를 이용해 생성은 가능
+		
+	2. abstract method -> 하위(자식) 클래스에게 구현을 강제
+						  구현부가 존재하지 않는다,
+						  부모 차원에서 구현할 수 없는 기능이지만 반드시 자식 클래스에게 구현을 강제해야 할 때 사용한다,
+						  부모 클래스에 abstract 메소드가 존재하면
+						  자식 클래스는 abstract 메소드를 구현하거나 자신이 abstract class로 선언되어야 한다(직접 객체와 불가),
+						  하나 이상의 abstract 메소드가 클래스 내에 존재하면 해당 클래스는 abstract class가 되어야 한다
+						  
+** Template Method Design Pattern **
+	Design Pattern(소프트웨어 설계 패턴)이란 소프트웨어 설계 단계에서 공통적으로 발생하는 문제에 대한 해결방안
+	
+	Template Method Design Pattern: 상위 클래스에서 알고리즘의 구조를 정의해 재사용하게 하는 패턴
+		상위(부모) 클래스 차원에서 작업공정 or 알고리즘의 구조를 정의해 재사용하게 하고 특정 부분은 하위(자식) 클래스에서 구현 또는 재정의해서 사용하도록 하는 패턴
+		
+** 11일차 주요목차 **
+- interface
+- java.util.Collection: 자료구조
+	Set
+	List
