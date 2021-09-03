@@ -1,0 +1,50 @@
+**4일차 주요목차**
+- review 
+- java data type : primitive data type, reference data type 
+- 객체 초기화 단계 , java memory 
+- 제어문 
+   조건문 if , else if , else 
+   조건문 switch case 
+   
+-------------------------------------------------------------------------------
+
+- java data type : primitive data type, reference data type 
+자바의 데이터 타입에는 기본형 데이터 타입(primitive data type)과 참조형 데이터 타입(reference data type)이 있다.
+1) primitive data type
+			1byte	2byte	4byte	8byte
+	정수형	byte	short	int		long	정수형의 기본형은 int형
+	실수형					float	double	실수형의 기본형은 double형
+	문자형			char					문자형은 오직 한 문자만 가능, 문자열은 참조형인 String을 사용
+	논리형	boolean							논리형은 true or false만 가능
+
+2) reference data type (참조형 데이터 타입)
+	참조형 데이터 타입은 일반적으로 클래스명 (or 인터페이스 명: 이후 공부 예정)이 된다.
+	참조형 데이터 타입(reference data type)은 기본형(primitive data type)을 제외한 모든 타입을 말한다.
+	변수 앞에 선언된 데이터 타입이 참조형(reference type)인 경우 이 변수를 참조변수(reference variable, rv)라고 한다.
+	참조변수에는 객체를 참조하기 위한 주소값이 저장되어 있다.
+	
+	example1) String s; // s 변수의 데이터 타입은 참조형 데이터 타입이자 클래스명인 String이다.
+			 Person p; // p 변수의 데이터 타입은 참조형 데이터 타입이자 클래스명인 Person이다.
+	
+	example2) Person p = new Person();
+			  위를 분석하면
+			  Person: 참조형 데이터 타입이자 클래스명
+			  p: 참조 변수 reference variable
+			  =: assign 할당 or 대입
+			  new: 객체 생성시 명시하는 자바 키워드
+			  Person(): 생성자(객체 생성시 실행되는 영역)
+			  -> 즉 new Person() 으로 객체가 heap영역에 저장되고 이때 이 객체를 참조하여 제어하기 위한 객체의 주소값이 반환된다.
+			  	이 반환되는 객체의 주소값을 p라는 참조변수에 저장하게 된다.
+			  	
+	Java Memory
+	- Heap 영역: 동적 메모리 영역, 객체 정보(속성 정보)를 저장하는 영역
+				Heap 영역에 저장되는 객체의 메모리 정보는 고유한 주소값이 생성
+	- Stack 영역: 지역변수(local variable)이 저장되는 영역
+	
+**5일차 수업목차**
+ - 반복문 for , while , do while 
+ - Variable Scope 변수 범위 : instance variable , local variable
+ - Java Memory
+ - Object ( or Class) Relationship : use a , has a , consist of  relationship
+ - Array
+	
