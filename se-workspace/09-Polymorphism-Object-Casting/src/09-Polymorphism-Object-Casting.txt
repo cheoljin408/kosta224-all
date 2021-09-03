@@ -1,0 +1,61 @@
+ **9일차 수업목록**
+ - Polymorphism
+ - instance of
+ - Object Casting
+ -----------------------------------------------
+ - Polymorphism
+ 	객체지향 주요 개념: Encapsulation, Inheritance, Polymorphism
+ 	
+ 	하나의 메세지 방식으로 다양한 객체들이 각자의 방식으로 동작하게 하는 성질
+ 	One Interface, Multiple Implements
+ 	하나의 객체가 다양한 타입의 변수로 참조되는 성질
+ 	
+ 	다형성(Polymorphism) 적용을 위해서는 계층구조(hierarchy) 형성이 필요하다
+ 	
+ 	자식 객체는 부모 타입의 변수로 참조 될 수 있다
+ 	ex) Animal = new Person(); // 가능
+ 		Object o = new Person(); // 가능
+ 		
+ 	ex2) class Product {}
+ 		 class Food extends Product {}
+ 		 class Computer extends Product {}
+ 		 
+ 		 사용하는 측								서비스를 제공하는 측
+ 		 main {									class KostaMarket {
+ 		 	rv.pay(new Food());			-->			public void pay(Product p) {} // 공통의 부모타입의 매개변수로 다양한 하위 객체들을 처리할 수 있다.
+ 		 	rv.pay(new Computer());				}
+ 		 }
+ 		 
+ - instanceof 연산자
+  : 객체의 타입을 비교하는 연산자
+  	true 와 false를 반환한다.
+  	is a relation일 경우에는 true를 밥ㄴ환한다.
+  	ex) class Animal {}
+  		class Person extends Animal {}
+  		------------------------------
+  		Person p = new Person();
+  		sysout(p instanceof Person) -> true
+  		sysout(p instanceof Animal) -> true : is a 관계이므로 true 반환
+ 		 
+ - Object Casting
+  : 객체 캐스팅, 형변환
+  부모 타입의 변수로 자식 객체를 참조할 경우
+  접근 가능한 영역은 부모의 멤버, 오버라이드 한 자식 객체의 메소드이다
+  만약 자식의 독자적 멤버(인스턴스 변수, 메소드)에 접근하여 사용하려고 할 경우에는
+  Object Casting(Object Down Casting)이 필요하다
+  ex)	Animal a = new Person();
+  		위 코드는 부모 타입의 변수로서 자식 객체를 참조한다.
+  		이 때 Person 객체의 독자적 멤버 (study())에 접근하기 위해서는 아래와 같이 객체 캐스팅이 필효
+  		((Person)a).study();
+  		or
+  		Person p = (Person)a;
+  		p.study();
+  		
+  **10일차 주요목차**
+  - Polymorphism 연습예제
+  - static
+  - final
+  - abstract
+  - interface
+  
+  - java.lang.String class
