@@ -59,3 +59,8 @@ create table guestbook(
 )
 
 create sequence guestbook_seq;
+
+-- 시퀀스명.nextval
+select guestbook_seq.nextval from dual;
+-- 시퀀스명.currval: 단독으로 사용될 수 없고 nextval
+select guestbook_seq.currval from dual;
