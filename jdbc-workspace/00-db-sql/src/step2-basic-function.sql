@@ -139,5 +139,12 @@ select min(price) as 최저가 from product;
 -- maker 조회
 select maker from product;
 
--- maker 종류를 조회
+-- distinct: maker 종류를 조회
 select distinct maker from product;
+
+-- like 연산자: 일부가 포함되는 내용을 검색하는 연산자(웹의 검색 기능에서 많이 사용됨)
+-- where 컬럼명 like '%검색키워드%'
+-- %: 0개 이상의 문자
+select * from product where name like '%면%';
+select * from product where maker like '%트진%';
+-- 어플리케이션 테스트: 04-jdbc에서 TestGuestBookDAO4에서 확인해 본다
