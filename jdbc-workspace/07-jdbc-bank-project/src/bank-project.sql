@@ -45,3 +45,5 @@ update account set balance = balance-50 where account_no = 1;
 
 -- 계좌번호가 존재하는지 유무
 select count(*) from account where account_no = 1;
+
+select * from account where balance = (select max(balance) from account)
