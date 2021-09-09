@@ -16,7 +16,7 @@ public class TestUnit1 {
 			// 계좌개설
 			// 1. 정상흐름 테스트
 			
-			AccountVO vo = new AccountVO("이강인", "1", 2000);
+			AccountVO vo = new AccountVO("이상순", "1", 2000);
 			dao.createAccount(vo);
 			System.out.println("계좌 개설");
 			
