@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	table {
+		border-collapse: collapse;
+	}
+	
+	table, td {
+		border: 1px solid black;
+	}
+	
+	td {
+		padding: 10px;
+	}
+</style>
+</head>
+<body>
+	<!-- 1행 2열 -->
+	<table >
+		<tr>
+			<td>곱창</td>
+			<td>참치</td>
+		</tr>
+	</table>
+	<br>
+	<!-- 2행 2열 -->
+	<table >
+		<tr>
+			<td>글번호</td>
+			<td>작성자</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>지코</td>
+		</tr>
+	</table>
+	<br>
+	<!-- 3행 3열 -->
+	<table >
+		<tr>
+			<td>글번호</td>
+			<td>작성자</td>
+			<td>글제목</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>지코</td>
+			<td>사람</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>근원</td>
+			<td>러브포엠</td>
+		</tr>
+	</table>
+	<br>
+	<!-- 
+		table의 td속성: colspan = "2" 2열을 합친다
+		
+		신청서
+		이름 아이유
+		나이 30세
+	 -->
+	<table >
+		<tr>
+			<td colspan="2">신청서</td>
+		</tr>
+		<tr>
+			<td>이름</td>
+			<td>아이유</td>
+		</tr>
+		<tr>
+			<td>나이</td>
+			<td>30세</td>
+		</tr>
+	</table>
+	<br>
+	<!-- 
+		rowspan: 행을 합칠 때 사용하는 속성
+		
+		신청서	아이유
+				30세
+	 -->
+	<table >
+		<tr>
+			<td rowspan="2">신청서</td>
+			<td>아이유</td>
+		</tr>
+		<tr>
+			<td>30세</td>
+		</tr>
+	</table>
+</body>
+</html>
