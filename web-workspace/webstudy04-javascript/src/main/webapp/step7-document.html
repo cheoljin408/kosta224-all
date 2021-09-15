@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript dom 제어 연습</title>
+<script type="text/javascript">
+	function moveTxt() {
+		let orgTxt = document.getElementById('orgTxt');
+		let destTxt = document.getElementById('destTxt');
+		
+		destTxt.value = orgTxt.value;
+		orgTxt.value = '';
+	}
+	
+	function enterKey() {
+		// alert('key up');
+		if(event.keyCode == 13) {
+			// alert('enter key up');
+			moveTxt();
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="orgTxt" autofocus="autofocus" onkeyup="enterKey()" />
+	<input type="button" value="이동" onclick="moveTxt()" />
+	<input type="text" id="destTxt" />
+	<!-- 
+		orgTxt id text 요소에 값을 입력한 후 이동 버튼을 누르면
+		destTxt id text 요소에 값이 이동된다
+	 -->
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript DOM document 객체 활용</title>
+<script type="text/javascript">
+	function testDom() {
+		// 입력양식 text 요소에 접근해서 사용자가 입력한 아이디 정보를 확인
+		let textComp = document.getElementById("userId");
+		console.log(textComp);
+		alert(textComp.value);
+		textComp.value = "";
+	}
+	
+	function testDom2() {
+		let nameComp = document.getElementById("pname"); // document.폼이름.요소이름
+		// console.log(nameComp.value);
+		alert(nameComp.value);
+		nameComp.value = "";
+	}
+</script>
+</head>
+<body>
+	<form>
+		회원 아이디 <input type="text" name="userId" id="userId" /> <!-- name 요소는 서버에 전송시에 필요 -->
+		<input type="button" value="테스트" onclick="testDom()" />
+	</form>
+	<hr>
+	<form name="productForm">
+		상품명 <input type="text" name="productName" id="pname" />
+		<input type="button" value="테스트2" onclick="testDom2()" />
+	</form>
+</body>
+</html>
