@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript function</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function hello() {
+			console.log("hello 함수 실행");
+			alert("hello 함수 실행");
+		}
+		
+		function bye(message) {
+			alert(message);
+		}
+		
+		function testParam(info, num) {
+			window.alert(info + " " + num);
+		}
+	</script>
+	javascript function(함수) 테스트
+	<br><br>
+	<input type="button" value="함수 테스트 1" onclick="hello()" />
+	<input type="button" value="함수 테스트 2" onclick="bye('안녕')" />
+	<input type="button" value="함수 테스트 3" onclick="testParam('감사', 7)" />
+</body>
+</html>
