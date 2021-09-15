@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOM window confirm 함수</title>
+<script type="text/javascript">
+	function test() {
+		let result = window.confirm("순대 좋아하세요?");
+		// alert(ressult);
+		if(result) {
+			alert("저와 함께 순대를 먹어요");
+		}
+		else {
+			alert("헤어져요");
+		}
+	}
+</script>
+</head>
+<body>
+	<button type="button" onclick="test()">눌러보세요</button>
+</body>
+</html>
