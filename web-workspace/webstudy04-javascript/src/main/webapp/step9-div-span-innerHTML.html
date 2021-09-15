@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>div span innerHTML 연습</title>
+<style>
+	#testDiv {
+		background-color: orange;
+	}
+	
+	#testSpan {
+		background-color: lime;
+	}
+</style>
+<script type="text/javascript">
+	function changeDivInfo() {
+		// div id testDiv 요소가 가지고 있는 html 정보를 alert으로 출력해본다 innerHTML 을 get
+		alert(document.getElementById('testDiv').innerHTML);
+		// div id testDiv인 요소의 내부 html 정보를 다시 할당한다 innerHTML 을 set
+		document.getElementById('testDiv').innerHTML = "<h3>즐거운 수요일 저녁입니다</h3>";
+	}
+	
+	function changeSpanInfo() {
+		document.getElementById('testSpan').innerHTML = "즐거운 저녁식사 되세요";
+	}
+</script>
+</head>
+<body>
+	<div id="testDiv">이 부분은 id testDiv로 지정된 div 영역입니다</div>
+	<div>이 부분은 div 영역입니다</div>
+	<span id="testSpan">이 부분은 id testSpan으로 지정된 span 영역입니다</span>
+	<br>
+	<br>
+	<input type="button" value="div정보변경" onclick="changeDivInfo()" />
+	
+	<!-- 아래 버튼을 클릭하면 즐거운 저녁식사 되세요로 변경된다 -->
+	<input type="button" value="span정보변경" onclick="changeSpanInfo()" />
+</body>
+</html>
