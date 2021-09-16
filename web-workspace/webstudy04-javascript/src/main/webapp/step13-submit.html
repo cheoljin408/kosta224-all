@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form submit</title>
+<script type="text/javascript">
+	function confirmForm() {
+		return confirm("전송하시겠습니까?");
+	}
+</script>
+</head>
+<body>
+	<!-- 
+		form 속성
+		action: 처리할 서버 url
+	 -->
+	<form action="step13-server.jsp" onsubmit="return confirmForm()">
+		별명 <input type="text" name="nick" required="required" />
+		<br>
+		나이 <input type="number" name="age" required="required" />
+		<br>
+		<!-- <input type="submit" value="전송" /> -->
+		<!-- 별도의 type을 지정하지 않으면 submit이 기본이다 -->
+		<button>전송</button> <!-- 아래 type="submit"과 동일 -->
+		<!-- <button type="submit">전송</button> -->
+	</form>
+</body>
+</html>
