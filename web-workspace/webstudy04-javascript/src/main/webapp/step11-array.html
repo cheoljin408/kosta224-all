@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function testArray1() {
+		let arr = new Array(3);
+		arr[0] = "대창";
+		arr[1] = "참치";
+		arr[2] = "치킨";
+		
+		for(let i=0; i<arr.length; i++) {
+			alert(arr[i]);
+		}
+	}
+	
+	function testArray2() {
+		let m = document.getElementsByName('menu');
+		console.log(m);
+		// alert(m.length); // menu name의 checkbox가 3개
+		// checkbox 입력양식 요소 객체의 속성 checked(체크 상태이면 true)
+		// alert(m[0].checked);
+		// for문을 이용해서 체크한 메뉴에 대해 메뉴명을 alert로 각각 출력한다
+		for(let i=0; i<m.length; i++) {
+			// alert(m[i].value);
+			// alert(m[i].checked);
+			if(m[i].checked)
+				alert(m[i].value);
+		}
+	}
+	
+	function testCheckBox() {
+		let a = document.getElementsByName("agree");
+		a[0].checked = true; // 체크상태로 만든다
+	}
+</script>
+</head>
+<body>
+	<button type="button" onclick="testArray1()"> 배열테스트1</button>
+	<hr>
+	<form>
+		<input type="checkbox" name="menu" value="닭갈비" />~닭갈비~<br>
+		<input type="checkbox" name="menu" value="공기밥" />~공기밥~<br>
+		<input type="checkbox" name="menu" value="참이슬" />~참이슬~<br>
+		<input type="button" value="주문" onclick="testArray2()" />
+	</form>
+	<hr>
+	<input type="checkbox" name="agree" value="동의" />동의
+	<input type="button" value="체크박스테스트" onclick="testCheckBox()" />
+</body>
+</html>
