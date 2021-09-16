@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function test() {
+		let name1 = "즐추석";
+		let name2 = "즐추석 ";
+		
+		console.log(name1.length);
+		console.log(name2.length);
+		console.log(name1 == name2);
+		console.log(name1 == name2.trim());
+		
+		var age1 = 21;
+		var age2 = "21";
+		console.log(age1 == age2);
+		console.log(age1 === age2);
+		
+		var age3 = age1 + 2;
+		console.log(age3);
+		
+		var age4 = age2 + 2;
+		console.log(age4);
+		
+		var age5 = parseInt(age2) + 2;
+		console.log(age5);
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="확인" onclick="test()" />
+</body>
+</html>
