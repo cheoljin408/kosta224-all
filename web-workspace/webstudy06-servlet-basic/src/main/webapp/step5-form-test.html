@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html form checkbox와 Servlet 연동</title>
+</head>
+<body>
+	<!-- 
+		checkbox에 하나 이상 체크를 하지 않으면 alert로 메뉴를 선택하세요 후
+		전송시키지 않는다 -> javascript로 구현해본다
+		
+		DOM
+		document.getElementsByName(name) -> javascript array로 반환
+		for loop 안의 if 문으로 checked 속성을 이용해 하나 이상 체크 되어있는 지를 판단
+		하나 이상 체크되지 않았으면 if문으로 메뉴를 선택하세요 alert보여주고
+		return false를 반환하면 된다
+	-->
+	<script type="text/javascript">
+	 	function checkForm() {
+	 		let menus = document.getElementsByName("menu");
+	 		let flag = false;
+			for(let i=0; i<menus.length; i++) {
+				if(menus[i].checked) {
+					flag = true;
+					break;
+				}
+			}
+			if(flag === false) {
+				alert("메뉴를 선택하세요");
+				return flag;
+			}
+		}
+	 </script>
+	<form method="get" action="CheckboxServlet" onsubmit="return checkForm()">
+		<input type="checkbox" name="menu" value="치킨" />치킨<br>
+		<input type="checkbox" name="menu" value="피자" />피자<br>
+		<input type="checkbox" name="menu" value="맥주" />맥주<br>
+		<button type="submit">주문하기</button>
+	</form>
+	<!-- 
+		치킨과 맥주를 체크하고 주문하기를 누르면
+		서블릿에서는
+		치킨 맥주 주문 완료
+	 -->
+</body>
+</html>

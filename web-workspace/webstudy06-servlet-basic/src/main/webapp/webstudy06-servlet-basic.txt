@@ -1,0 +1,78 @@
+**Servlet 기본 개념**
+
+HTTP: HyperText Transfer Protocol
+
+WAS: Web Application Server
+	 Web Server + Web Container
+	 Web Server -> HTTP 에 의거해 HTML을 서비스하는 서버
+	 Web Container -> Servlet/JSP 실행환경을 제공
+	 
+WAS 제품 중 Apache Tomcat을 사용한다
+
+Web 환경 설정
+0. WAS 설치
+1. apache tomcat/conf/server.xml에서 port 변경(이유는 오라클 포트와 중복 방지를 위해)
+2. 한글처리(get 방식) - URLEncoding = "utf-8" 설정 추가
+3. apache tomcat/conf/server.xml에서 reloadable="true" 설정 추가
+   java class(Servlet 포함해서)를 자동 리로드 해서 개발의 편의성을 증가
+
+
+Servlet: Java Web Programming 기술
+		 java class로 표현
+		 Model2 Architecture(MVC)에서 Controller의 역할을 한다
+		 (Spring Framework의 웹기술 SpringMVC의 FrontController인 DispatcherServlet도 서블릿이다)
+		 
+JSP: Java Server Page
+	 동적인 웹페이지 생성을 위한 기술
+	 HTML 구조 상에서 JSP tag(java code)를 삽입 -> View를 구현하는 측면헤서 장점
+	 Model2 Architecture(MVC)에서 View의 역할을 한다
+
+참고) MVC Design Pattern
+	 Model: 비즈니스 ㅗ직과 데이터 엑세스 로직을 담당
+	 		Java Beans(or Java Component): Service, DAO, DTO, VO...
+	 View: 클라이언트에게 동적인 화면을 제공: JSP
+	 Controller: 제어자의 역할, 클라이언트의 요청을 분석, 그에대한 Model 연동 후
+	 			 적절한 View를 선택해 응답하게 하는 역할
+	 			 
+	 JSP는 Servlet이다 -> JSP는 Web Container에 의해 java class로 생성되어 컴파일, 실행되고
+	 					이 자바 클래스는 Servlet Interface의 하위, HttpServlet class의 자식이다
+	 					
+-----------------------------------------------------------------------------------------
+
+webstudy06-servlet-basic
+
+Deployeement Descripter(DD): WEB-INF/web.xml -> 웹 어플리케이션의 설정 정보를 기술
+배포			 기술서			 WAS는 웹 어플리케이션 실행 첫 시점에 DD(web.xml) 정보를 로드하여
+							 서비스에 반영한다
+							 
+web.xml의 서블릿 설정 부분
+ <servlet>
+  	<servlet-name>basic</servlet-name> <!-- 서블릿 별칭 --!>
+  	<servlet-class>step1.BasicServlet</servlet-class> <!-- 패키지명.클래스명 --!>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>basic</servlet-name> <!-- 위 서블릿을 지칭 --!>
+  	<url-pattern>/bs</url-pattern> <!-- 클라이언트가 해당 서블릿을 실행시켜 서비스 받기 위한 url --!>
+  </servlet-mapping>
+  
+
+Http Rquest Method(요청방식)
+	1. get 방식: 정보 조회용, url 상에 전송 정보가 노출됨
+	2. post 방식: 정보 전달용(주로 서버자원의 데이터 변경시 사용), url 상에 전송 정보가 노출되지 않고 http request body 부분에 저장되어 전송,
+				 전송 데이터 용양 제한x
+	
+	- client(html form)과 server(servlet) 연동
+	  
+	  client
+	  <form action="url pattern" method="get">
+	  <input type="text" name="food" />
+	  <input type="submit value="주문" />
+	  </form>
+	  
+	  http://localhost:8888/webstudy06-servlet-basic/url-pattern?name=value&name=value
+	  
+	  ------------------------------------------------
+	  
+	  server
+	  url pattern에 해당하는 서블릿의 doGet 메소드가 실행
+	  클라이언트가 보낸 정보를 입력받기 위해 request.getParameter(name) 즉 request.getParameter("food")과 같이 입력받는다
