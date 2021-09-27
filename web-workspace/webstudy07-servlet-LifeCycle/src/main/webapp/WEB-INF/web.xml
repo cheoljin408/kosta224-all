@@ -17,6 +17,7 @@
 		<display-name>LifeCycleServlet</display-name>
 		<servlet-name>LifeCycleServlet</servlet-name>
 		<servlet-class>step1.LifeCycleServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LifeCycleServlet</servlet-name>
