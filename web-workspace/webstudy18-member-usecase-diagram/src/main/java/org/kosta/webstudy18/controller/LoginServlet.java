@@ -30,6 +30,7 @@ public class LoginServlet extends HttpServlet {
 			String path = null;
 			if(vo != null) {
 				path = "index.jsp";
+				// HttpSession session = request.getSession();
 				request.getSession().setAttribute("mvo", vo);
 				System.out.println("log in");
 			}
