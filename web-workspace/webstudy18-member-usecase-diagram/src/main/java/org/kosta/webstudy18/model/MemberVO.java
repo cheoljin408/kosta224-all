@@ -1,6 +1,15 @@
 package org.kosta.webstudy18.model;
 
-public class MemberVO {
+import java.io.Serializable;
+
+/*
+ 	WAS가 리로드될때 객체 직렬화를 통해 세션정보를 유지하므로 인증정보인 회원 클래스를 Serializable interface 계층구조 하에 둔다
+ */
+public class MemberVO implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4610684342218808436L;
 	private String id;
 	private String password;
 	private String name;
