@@ -509,13 +509,13 @@ ex) 도서검색 Use Case는 신착도서검색 UseCase, 간행물검색 Use Cas
   
   			 View - css/home.css, index.jsp
   			 (비로그인시: 아이디로 회원조회폼, 로그인폼, 회원가입링크
-  			 로그인시: 아이디로 회원조회폼, 주소로 회원리스트조회폼, 누구님(로그인폼을 대체), 회원정보수정링크)
+  			 로그인시: 아이디로 회원조회폼, 주소로 회원리스트조회폼, 누구님(로그인폼을 대체), 회원정보수정링크
   			 아이디로 회원조회 - findbyid-ok.jsp, findbyid-fail.jsp
   			 로그인 - login-fail.jsp에서 alert 후 index.jsp로 이동, 로그인 성공시에는 바로 index.jsp
   			 로그아웃 - index.jsp에서 로그인 상태시에 링크 제공, 로그아웃 성공되면 다시 index.jsp로 이동
   			 주소로 회원리스트 조회 - index.jsp, 조회결과 - findbyaddress-result.jsp(table 형식으로 회원 아이디, 회원명을 제공)
   			 회원정보수정 - update-form.jsp(수정폼 제공), update-result.jsp(수정 결과 화면)
-  			 회원가입 - register-form.jsp(회원가입폼 제공), register-result.jsp(가입결과 화면), idcheck-ok.jsp(팝업), idcheck-fail.jsp(팝업)
+  			 회원가입 - register-form.jsp(회원가입폼 제공), register-result.jsp(가입결과2 화면), idcheck-ok.jsp(팝업), idcheck-fail.jsp(팝업)
   			 
   			 Controller - FindMemberByIdServlet, LoginServlet, LogoutServlet, FindMemberListByAddressServlet, UpdateMemberServlet
   			 RegisterMemberServlet, IdCheckServlet
@@ -524,6 +524,7 @@ ex) 도서검색 Use Case는 신착도서검색 UseCase, 간행물검색 Use Cas
 
 로그인, 로그아웃
 1) 로그인
+
 index.jsp --- Login Servlet -------------- MemberDAO ----------------- Database
 					|				login(id, password): MemberVO
 					|
@@ -534,3 +535,45 @@ index.jsp --- Login Servlet -------------- MemberDAO ----------------- Database
 			로그인 성공할 경우 index.jsp로 이동, 로그인 폼 대신 누구님 메세지와 아래 라인에 로그아웃 링크를 보여준다
 			
 2) 로그아웃
+
+index.jsp ------- LogoutServlet
+						|
+						| 로그아웃 처리 후
+						| redirect
+						|
+						index.jsp로 이동(누구님 메세지와 로그아웃 링크 대신 로그인 폼을 제공한다)
+						
+3) 주소로 회원조회
+
+index.jsp -------- FindMemberListByAddressServlet -------------------MemberDAO ------------------Database
+							|
+							| request 객체에 리스트를 할당		findMemberLisetByAddress(address: String): ArrayList
+							| forward
+							|
+					findbyaddress-result.jsp
+					
+4) 회원정보수정
+
+index.jsp ------ update-form.jsp -------- UpdateMemberServlet ------------------ MemberDAO
+																					update(MemberVO)
+											doPost()
+											MemberDAO를 이용해 DB에 회원정보를 수정
+											세션에 저장된 회원정보를 업데이트
+											|
+											| redirect: update-result.jsp
+											Home
+											회원정보 수정완료
+											
+											아이디: java
+											이름: 어이유
+											주소: 오리
+											
+					<input type="text" name="id" readonly="readonly" value="세션에 저장된 회원아이디">
+					<%-- readonly는 수정불가, 읽기전용 --%>
+					
+5) 회원가입
+
+index.jsp -------- register-form.jsp
+					비밀번호와
+					비밀번호 확인란을 입력하게 해
+					일치할 때 가입하도록 한다
