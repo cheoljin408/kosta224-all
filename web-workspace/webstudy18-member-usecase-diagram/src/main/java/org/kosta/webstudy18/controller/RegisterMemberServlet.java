@@ -29,6 +29,7 @@ public class RegisterMemberServlet extends HttpServlet {
 		MemberVO vo = new MemberVO(memberId, memberPass, memberName, memberAddress);
 		
 		try {
+			
 			MemberDAO.getInstance().register(vo);
 			response.sendRedirect("register-result.jsp");
 		} catch (SQLException e) {
