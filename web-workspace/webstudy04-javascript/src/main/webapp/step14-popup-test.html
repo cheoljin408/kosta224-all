@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 팝업창을 띄우는 html javascript 연습 예제 -->
+	<script type="text/javascript">
+		function openPopup() {
+			// alert(1);
+			let nickComp = document.getElementById("nick");
+			if(nickComp.value === "") {
+				alert("닉네임을 입력하세요");
+				nickComp.focus();
+			}
+			else {
+				// 팝업창을 띄울 때 server로 닉네임을 전달하려고 한다: query string을 이용
+				window.open("step15-popup.jsp?nick=" + nickComp.value, "mypopup", "width=250, height=150, top=150, left=400");
+			}
+		}
+		
+		function showHidden() {
+			alert(document.getElementById("flag").value);
+		}
+	</script>
+	<form>
+		<input type="text" id="nick" name="nickName" >
+		<input type="hidden" id="flag" value="" >
+		<input type="button" value="팝업창 띄우기" onclick="openPopup()">
+		<input type="button" value="히든값 확인" onclick="showHidden()">
+	</form>
+</body>
+</html>
