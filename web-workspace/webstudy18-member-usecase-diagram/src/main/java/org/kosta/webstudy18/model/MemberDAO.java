@@ -152,11 +152,11 @@ public class MemberDAO {
 		}
 	}
 
-	public int idCheck(String memberId) throws SQLException {
+	public boolean idCheck(String memberId) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int result = 0;
+		boolean result = false;
 		
 		try {
 			con = getConnection();
@@ -164,8 +164,8 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, memberId);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				result = rs.getInt(1);
+			if(rs.next() && rs.getInt(1) == 1) {
+				result = true;
 			}
 		} finally {
 			closeAll(rs, pstmt, con);
