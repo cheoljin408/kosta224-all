@@ -23,3 +23,5 @@ select * from mvc_product;
 select id, name, maker, price, to_char(regdate, 'yyyy-mm-dd') from mvc_product where id=1;
 
 select id, name, maker, price, to_char(regdate, 'yyyy-mm-dd') from mvc_product where id=1;
+
+select name, maker, to_char(regdate, 'yyyy-mm-dd') from mvc_product;
