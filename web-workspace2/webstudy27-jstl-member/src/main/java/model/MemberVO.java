@@ -1,8 +1,11 @@
 package model;
 
-public class MemberVO {
+import java.io.Serializable;
+
+public class MemberVO implements Serializable {
+	private static final long serialVersionUID = -6095546371485627892L;
 	private String id;
-	private String passowrd;
+	private String password;
 	private String name;
 	private String address;
 	private String birthday;
@@ -13,10 +16,10 @@ public class MemberVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MemberVO(String id, String passowrd, String name, String address, String birthday, String regdate) {
+	public MemberVO(String id, String password, String name, String address, String birthday, String regdate) {
 		super();
 		this.id = id;
-		this.passowrd = passowrd;
+		this.password = password;
 		this.name = name;
 		this.address = address;
 		this.birthday = birthday;
@@ -31,12 +34,12 @@ public class MemberVO {
 		this.id = id;
 	}
 
-	public String getPassowrd() {
-		return passowrd;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPassowrd(String passowrd) {
-		this.passowrd = passowrd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getName() {
@@ -73,7 +76,7 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", passowrd=" + passowrd + ", name=" + name + ", address=" + address
+		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", address=" + address
 				+ ", birthday=" + birthday + ", regdate=" + regdate + "]";
 	}
 	
