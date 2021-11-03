@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<form action="WritePostFormController.do" method="post">
+<form action="WritePostController.do" method="post">
 	<table class="table">
 		<tr>
 			<td>
@@ -10,9 +10,7 @@
 		</tr>
 		<tr>
 			<td>
-				<textarea rows="10" class="form-control" name="content" placeholder="본문내용" required="required">
-					
-				</textarea>
+				<textarea rows="10" class="form-control" name="content" placeholder="본문내용" required="required"></textarea>
 			</td>
 		</tr>
 	</table>

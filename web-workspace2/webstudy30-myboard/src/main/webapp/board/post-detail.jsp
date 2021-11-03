@@ -25,16 +25,25 @@
 			<td colspan="5" class="text-center">
 				<script type="text/javascript">
 					const deletePost = () => {
-						if(confirm("삭제하시겠습니까?") {
+						if(confirm("삭제하시겠습니까?")) {
 							document.getElementById("deleteForm").submit();
+						}
+					}
+					
+					const updatePost = () => {
+						if(confirm("수정하시겠습니까?")) {
+							document.getElementById("updateForm").submit();
 						}
 					}
 				</script>
 				<form action="DeletePostController.do" method="post" id="deleteForm">
 					<input type="hidden" name="no" value="${pvo.no}">
 				</form>
+				<form action="UpdatePostFormController.do" method="post" id="updateForm">
+					<input type="hidden" name="no" value="${pvo.no}">
+				</form>
 				<button type="button" class="nutton btn-success" onclick="deletePost()">삭제</button>
-				<button type="button" class="nutton btn-success">수정</button>
+				<button type="button" class="nutton btn-success" onclick="updatePost()">수정</button>
 			</td>
 		</tr>
 	</c:if>
