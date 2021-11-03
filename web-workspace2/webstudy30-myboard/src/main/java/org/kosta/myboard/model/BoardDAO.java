@@ -117,4 +117,53 @@ public class BoardDAO {
 		
 		return pvo;
 	}
+	
+	public void posting(PostVO postVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = dataSource.getConnection();
+			String sql = "insert into board(no, title, content, time_posted, id) values(board_seq.nextval, ?, ?, sysdate, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, postVO.getTitle());
+			pstmt.setString(2, postVO.getContent());
+			pstmt.setString(3, postVO.getMemberVO().getId());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+	}
+	
+	public void deletePostByNo(String no) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = dataSource.getConnection();
+			String sql = "delete from board where no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, no);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+	}
+	
+	public void updatePostByNo(PostVO postVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = dataSource.getConnection();
+			String sql = "update board set title=?, content=? where no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, postVO.getTitle());
+			pstmt.setString(2, postVO.getContent());
+			pstmt.setInt(3, postVO.getNo());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+	}
  }
