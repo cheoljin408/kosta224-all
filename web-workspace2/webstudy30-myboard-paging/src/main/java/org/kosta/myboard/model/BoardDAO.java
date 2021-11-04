@@ -33,8 +33,14 @@ public class BoardDAO {
 		closeAll(pstmt, con);
 	}
 	
-	/*
-	 	
+	/**
+	 	select b.no, b.title, b.hits, b.time_posted, m.name
+		from (
+			select row_number() over(order by no desc) as rnum, no, title, hits,
+			to_char(time_posted, 'yyyy.mm.dd') as time_posted, id
+			from board
+		) b, board_member m
+		where b.id = m.id and rnum between 1 and 5;
 	 */
 	public ArrayList<PostVO> getPostingList() throws SQLException {
 		ArrayList<PostVO> list = new ArrayList<PostVO>();
@@ -45,10 +51,13 @@ public class BoardDAO {
 		try {
 			con = dataSource.getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("select b.no, b.title, m.name, to_char(b.time_posted, 'yyyy.mm.dd'), b.hits ");
-			sql.append("from board b, board_member m ");
-			sql.append("where b.id = m.id ");
-			sql.append("order by b.no desc");
+			sql.append("select b.no, b.title, b.hits, b.time_posted, m.name ");
+			sql.append("from ( ");
+			sql.append("select row_number() over(order by no desc) as rnum, no, title, hits, ");
+			sql.append("to_char(time_posted, 'yyyy.mm.dd') as time_posted, id ");
+			sql.append("from board ");
+			sql.append(") b, board_member m ");
+			sql.append("where b.id = m.id and rnum between 1 and 5");
 			pstmt = con.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();
 			
@@ -57,12 +66,13 @@ public class BoardDAO {
 				
 				pvo.setNo(rs.getInt(1));
 				pvo.setTitle(rs.getString(2));
+				pvo.setHits(rs.getInt(3));
 				pvo.setTimePosted(rs.getString(4));
-				pvo.setHits(rs.getInt(5));
+				
 				
 				MemberVO mvo = new MemberVO();
 				
-				mvo.setName(rs.getString(3));
+				mvo.setName(rs.getString(5));
 				pvo.setMemberVO(mvo);
 				list.add(pvo);
 			}
