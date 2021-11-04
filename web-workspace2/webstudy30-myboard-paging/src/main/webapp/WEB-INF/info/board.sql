@@ -49,3 +49,61 @@ select hits from board where no=1
 select b.no, b.title, m.name, b.content, m.id, b.hits, to_char(b.time_posted, 'yyyy.mm.dd hh24:mi:ss') as time_posted
 from board b, board_member m
 where b.id=m.id and b.no=1
+
+-- row_number() over() sample
+select rnum, no, title
+from (
+	select row_number() over(order by no desc) as rnum, no, title from player
+) where rnum between 4 and 6;
+
+-- 회원정보를 확인
+select * from board_member;
+
+delete from board;
+commit
+select count(*) from board;
+
+-- 시퀀스 삭제 및 생성
+drop sequence board_seq;
+create sequence board_seq nocache;
+
+-- board table insert
+insert into board(no, title, content, time_posted, id) values(board_seq.nextval, '불목', '즐거운 공부시간', sysdate, 'java');
+insert into board(no, title, content, time_posted, id) values(board_seq.nextval, '즐주말', '즐거운 주말', sysdate, 'spring');
+insert into board(no, title, content, time_posted, id) values(board_seq.nextval, '행복한 프로젝트', '웃으면서 합시다', sysdate, 'java');
+
+-- select한 정보를 다시 insert 한다(4번 실행)
+insert into board(no, title, content, time_posted, id)
+select board_seq.nextval, title, content, sysdate, id from board
+
+-- Paging SQL
+-- row_number() over() sample
+select rnum, no, title
+from (
+	select row_number() over(order by no desc) as rnum, no, title from player
+) where rnum between 4 and 6;
+
+-- step1
+-- row number 함수를 적용
+select row_number() over(order by no desc) as rnum, no, title, hits,
+to_char(time_posted, 'yyyy.mm.dd') as time_posted, id
+from board
+
+-- step2
+-- 1 page에 해당하는 게시물 리스트를 조회(rnum 기준으로 1부터 5사이)
+select rnum, no, title, hits, time_posted, id
+from (
+	select row_number() over(order by no desc) as rnum, no, title, hits,
+	to_char(time_posted, 'yyyy.mm.dd') as time_posted, id
+	from board
+) where rnum between 1 and 5;
+
+-- step3 게시물 리스트에서 필요한 정보(no, title, time_posted, hits, member name) 중 회원명을
+-- 함께 조회하기 위해 board_member 테이블과 join을 한다
+select b.no, b.title, b.hits, b.time_posted, m.name
+from (
+	select row_number() over(order by no desc) as rnum, no, title, hits,
+	to_char(time_posted, 'yyyy.mm.dd') as time_posted, id
+	from board
+) b, board_member m
+where b.id = m.id and rnum between 1 and 5;
