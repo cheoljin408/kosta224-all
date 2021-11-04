@@ -1,7 +1,7 @@
 /*
 	다 대 다 관계(Many To Many Relation)는 실무에서 사용하지 않는다
-	다 대 다 관계는 교차엔티티(Intersection Entity)를 해소한다
-	교차엔티티(Intersection Entity)는 제휴 엔티티(Association Entity) 똔 ㄴ
+	다 대 다 관계는 교차엔티티(Intersection Entity)로 해소한다
+	교차엔티티(Intersection Entity)는 제휴 엔티티(Association Entity) 또는
 	릴레이션 엔티티(Relation Entity)라고도 부른다
 	
 	예) 고객과 상품 엔티티는 다 대 다 관계이다
