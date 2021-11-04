@@ -95,7 +95,14 @@ public class PagingBeanEx {
 	 */
 	private int getTotalPage() {
 		int totalPage = 0;
-		//
+		
+		if(this.totalPostCount % this.postCountPerPage == 0) {
+			totalPage = this.totalPostCount / this.postCountPerPage;
+		}
+		else {
+			totalPage = this.totalPostCount / this.postCountPerPage + 1;
+		}
+		
 		return totalPage;
 	}
 
@@ -104,7 +111,7 @@ public class PagingBeanEx {
 	 * 1. 총 페이지수 % Page Group 당 Page 수. <br>
 	 * => 0 이면 둘을 / 값이 총 페이지 수<br>
 	 * 2. 총 페이지수 % Page Group 당 Page 수. <br>
-	 * => 0보다 크면 둘을 / 값에 +1을 한 값이 총 페이지 수<br>
+	 * => 0보다 크면 둘을 / 값에 +1을 한 값이 총 페이지 그룹수<br>
 	 * ex) 총 게시물 수 23 개 <br>
 	 * 총 페이지 ? 총 페이지 그룹수 ? <br>
 	 * 페이지 1 2 3 4 5<br>
@@ -113,7 +120,14 @@ public class PagingBeanEx {
 	 */
 	private int getTotalPageGroup() {
 		int totalPageGroup = 0;
-		//
+		
+		if(this.getTotalPage() % this.pageCountPerPageGroup == 0) {
+			totalPageGroup = this.getTotalPage()/this.pageCountPerPageGroup;
+		}
+		else {
+			totalPageGroup = this.getTotalPage()/this.pageCountPerPageGroup + 1;
+		}
+		
 		return totalPageGroup;
 	}
 
@@ -129,7 +143,14 @@ public class PagingBeanEx {
 	 */
 	private int getNowPageGroup() {
 		int nowPageGroup = 0;
-		//
+		
+		if(this.nowPage % this.pageCountPerPageGroup == 0) {
+			nowPageGroup = this.nowPage / this.pageCountPerPageGroup;
+		}
+		else {
+			nowPageGroup = this.nowPage / this.pageCountPerPageGroup + 1;
+		}
+		
 		return nowPageGroup;
 	}
 
@@ -140,11 +161,12 @@ public class PagingBeanEx {
 	 * 페이지 그룹 <br>
 	 * 1 2 3 4 || 5 6 7 8 || 9 10 <br>
 	 * 
+	 * ex) 현재 페이지 8이면 이전 페이지 그룹의 마지막 번호 4이고 여기에 +1 하면 시작페이지 번호가 됨
 	 * @return
 	 */
 	public int getStartPageOfPageGroup() {		
 		//
-		return 0;
+		return (this.getNowPageGroup()-1) * this.pageCountPerPageGroup + 1;
 	}
 
 	/**
@@ -157,7 +179,12 @@ public class PagingBeanEx {
 	 * @return
 	 */
 	public int getEndPageOfPageGroup() {
-		int endPage = 0;
+		int endPage = this.getNowPageGroup()*this.pageCountPerPageGroup;
+		
+		if(endPage > this.getTotalPage()) {
+			endPage = this.getTotalPage();
+		}
+		
 		return endPage;
 	}
 
@@ -171,7 +198,11 @@ public class PagingBeanEx {
 	 */
 	public boolean isPreviousPageGroup() {
 		boolean flag = false;
-		//
+		
+		if(this.getNowPageGroup() > 1) {
+			flag = true;
+		}
+		
 		return flag;
 	}
 
@@ -186,7 +217,11 @@ public class PagingBeanEx {
 	 */
 	public boolean isNextPageGroup() {
 		boolean flag = false;
-		//
+		
+		if(this.getNowPageGroup() < this.getTotalPageGroup()) {
+			flag = true;
+		}
+		
 		return flag;
 	}
 
@@ -218,6 +253,10 @@ public class PagingBeanEx {
 		System.out.println("getStartRowNumber:" + p.getStartRowNumber());
 		// 현페이지의 마지막 row number 를 조회 30
 		System.out.println("getEndRowNumber:" + p.getEndRowNumber());
+		// 총 페이지 수
+		System.out.println("getTotalPage:" + p.getTotalPage());
+		// 총 페이지 그룹 수
+		System.out.println("getTotalPageGroup:" + p.getTotalPageGroup());
 		// 게시물수 31 -> 총페이지수 7 -> 총페이지그룹->2
 		// 현재 페이지 그룹 : 2
 		System.out.println("getNowPageGroup:" + p.getNowPageGroup());
