@@ -106,4 +106,5 @@ from (
 	to_char(time_posted, 'yyyy.mm.dd') as time_posted, id
 	from board
 ) b, board_member m
-where b.id = m.id and rnum between 1 and 5;
+where b.id = m.id and rnum between 1 and 5
+order by b.no desc

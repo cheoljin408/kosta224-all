@@ -42,7 +42,7 @@ public class BoardDAO {
 		) b, board_member m
 		where b.id = m.id and rnum between 1 and 5;
 	 */
-	public ArrayList<PostVO> getPostingList() throws SQLException {
+	public ArrayList<PostVO> getPostingList(PagingBean pagingBean) throws SQLException {
 		ArrayList<PostVO> list = new ArrayList<PostVO>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -57,8 +57,11 @@ public class BoardDAO {
 			sql.append("to_char(time_posted, 'yyyy.mm.dd') as time_posted, id ");
 			sql.append("from board ");
 			sql.append(") b, board_member m ");
-			sql.append("where b.id = m.id and rnum between 1 and 5");
+			sql.append("where b.id = m.id and rnum between ? and ? ");
+			sql.append("order by b.no desc");
 			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setInt(1, pagingBean.getStartRowNumber());
+			pstmt.setInt(2, pagingBean.getEndRowNumber());
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -175,5 +178,33 @@ public class BoardDAO {
 		} finally {
 			closeAll(pstmt, con);
 		}
+	}
+	
+	/**
+	 * 총 게시물 수를 조회<br>
+	 * 페이징 처리를 위해 동작
+	 * @return
+	 * @throws SQLException
+	 */
+	public int getTotalPostCount() throws SQLException {
+		int totalPostCount = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = dataSource.getConnection();
+			String sql = "select count(*) from board";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalPostCount = rs.getInt(1);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		
+		return totalPostCount;
 	}
  }

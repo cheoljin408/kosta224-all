@@ -6,15 +6,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.kosta.myboard.model.BoardDAO;
+import org.kosta.myboard.model.PagingBean;
 import org.kosta.myboard.model.PostVO;
 
 public class ListController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ArrayList<PostVO> postList = null;
-		postList = BoardDAO.getInstance().getPostingList();
-		request.setAttribute("postList", postList);
+		int totalPostCount = BoardDAO.getInstance().getTotalPostCount();
+		String pageNo = request.getParameter("pageNo");
+		PagingBean pagingBean = null;
+		if(pageNo == null) {
+			// 현재 페이지가 1page로 할당되어 있음
+			pagingBean = new PagingBean(totalPostCount);
+		}
+		else {
+			// client에서 보낸 page번호로 할당한다
+			pagingBean = new PagingBean(totalPostCount, Integer.parseInt(pageNo));
+		}
+		
+		ArrayList<PostVO> list = BoardDAO.getInstance().getPostingList(pagingBean);
+		
+		// 게시물 리스트 정보
+		request.setAttribute("postList", list);
+		
+		// 페이징 정보
+		request.setAttribute("pagingBean", pagingBean);
+		
 		// template layout 페이지를 이용해 리스트 화면을 제공
 		request.setAttribute("url", "board/list.jsp");
 		return "layout.jsp";

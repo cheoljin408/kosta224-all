@@ -38,10 +38,20 @@
 </table>
 <%-- 페이징 처리 --%>
 <ul class="pagination justify-content-center" style="margin:20px 0">
-  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-  <li class="page-item"><a class="page-link" href="#">2</a></li>
-  <li class="page-item"><a class="page-link" href="#">3</a></li>
-  <li class="page-item"><a class="page-link" href="#">4</a></li>
-  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+	<c:if test="${pagingBean.previousPageGroup}">
+		<li class="page-item"><a class="page-link" href="ListController.do?pageNo=${pagingBean.startPageOfPageGroup-1}">Previous</a></li>
+	</c:if>
+	<c:forEach begin="${pagingBean.startPageOfPageGroup}" end="${pagingBean.endPageOfPageGroup}" var="page">
+		<c:choose>
+			<c:when test="${page == pagingBean.nowPage}">
+				<li class="page-item active"><a class="page-link" href="ListController.do?pageNo=${page}">${page}</a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="page-item"><a class="page-link" href="ListController.do?pageNo=${page}">${page}</a></li>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+	<c:if test="${pagingBean.nextPageGroup}">
+		<li class="page-item"><a class="page-link" href="ListController.do?pageNo=${pagingBean.endPageOfPageGroup+1}">Next</a></li>
+	</c:if>
 </ul>
