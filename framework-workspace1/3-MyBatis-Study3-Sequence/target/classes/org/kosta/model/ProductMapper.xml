@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.model.ProductMapper">
+	<select id="getTotalProductCount" resultType="int">
+		select count(*) from spring_product
+	</select>
+	<select id="getMakerKindList" resultType="string">
+		select distinct maker from spring_product
+	</select>
+	<!-- 
+		컬럼명과 인스턴스 변수명이 불일치할 때 방법
+		1. 아래와 같이 별칭을 인스턴스 변수명으로 주면 된다
+		2. spring mybatis 연동 설정에 underscore와 camelCase를 자동 연결하도록 정의
+	 -->
+	<!-- <select id="findProductByNo" resultType="ProductVO" parameterType="int">
+		select product_no as productNo, name, maker, price from spring_product where product_no = #{value}
+	</select> -->
+	<select id="findProductByNo" resultType="ProductVO" parameterType="int">
+		select product_no, name, maker, price from spring_product where product_no = #{value}
+	</select>
+	<select id="findProductListByMakerAndPrice" resultType="ProductVO" parameterType="ProductVO">
+		select product_no, name, maker, price
+		from spring_product
+		where maker = #{maker} and price > #{price}
+		order by product_no desc
+	</select>
+</mapper>
