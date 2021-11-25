@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.model.HumanResourceMapper">
+	<select id="getAllDepartmentList" resultType="map">
+		select deptno, dname, loc from spring_department
+	</select>
+	<select id="findEmployeeAndDeptByEmpNo" parameterType="int" resultType="map">
+		select e.ename, d.dname, d.loc
+		from spring_employment e, spring_department d
+		where e.empno = #{value} and e.deptno = d.deptno
+	</select>
+	<select id="findEmployeeAndDeptListOuterJoin" resultType="map">
+		select e.empno, e.ename, d.deptno, d.dname
+		from spring_employment e, spring_department d
+		where e.deptno(+) = d.deptno
+	</select>
+	<select id="getEmpGroupByDeptno" resultType="map">
+		select d.deptno, d.dname, v.emp_count
+		from (
+			select count(*) as emp_count, deptno
+			from spring_employment
+			group by deptno
+		) v, spring_department d
+		where v.deptno = d.deptno
+		order by v.deptno desc
+	</select>
+	<select id="getEmpGroupByDeptnoOuterJoin" resultType="map">
+		select d.deptno, d.dname, nvl(v.emp_count, 0) as emp_count
+		from (
+			select count(*) as emp_count, deptno
+			from spring_employment
+			group by deptno
+		) v, spring_department d
+		where v.deptno(+) = d.deptno
+		order by v.deptno desc
+	</select>
+</mapper>
