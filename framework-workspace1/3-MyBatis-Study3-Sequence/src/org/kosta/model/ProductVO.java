@@ -15,6 +15,13 @@ public class ProductVO {
 		// TODO Auto-generated constructor stub
 	}
 
+	public ProductVO(String name, String maker, int price) {
+		super();
+		this.name = name;
+		this.maker = maker;
+		this.price = price;
+	}
+
 	public ProductVO(int productNo, String name, String maker, int price) {
 		super();
 		this.productNo = productNo;

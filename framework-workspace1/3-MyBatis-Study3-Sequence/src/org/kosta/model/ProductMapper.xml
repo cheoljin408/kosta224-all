@@ -15,13 +15,49 @@
 	<!-- <select id="findProductByNo" resultType="ProductVO" parameterType="int">
 		select product_no as productNo, name, maker, price from spring_product where product_no = #{value}
 	</select> -->
+	<sql id="selectProduct">
+		select product_no, name, maker, price from spring_product
+	</sql>
 	<select id="findProductByNo" resultType="ProductVO" parameterType="int">
-		select product_no, name, maker, price from spring_product where product_no = #{value}
+		<include refid="selectProduct"/> where product_no = #{value}
 	</select>
 	<select id="findProductListByMakerAndPrice" resultType="ProductVO" parameterType="ProductVO">
-		select product_no, name, maker, price
-		from spring_product
+		<include refid="selectProduct"/>
 		where maker = #{maker} and price > #{price}
 		order by product_no desc
 	</select>
+	<select id="findProductListLessThanPrice" parameterType="int" resultType="ProductVO">
+		<include refid="selectProduct"/>
+		<!-- CDATA Section: 해당 영역은 tag가 아니라 Character Data임을 알린다 -->
+		<![CDATA[
+			where price < #{value}
+		]]>
+	</select>
+	<select id="findProductListByLowPriceAndHighPrice" parameterType="map" resultType="ProductVO">
+		<include refid="selectProduct"/>
+		where price between #{LOWPRICE} and #{HIGHPRICE}
+		<!-- 
+		<![CDATA[
+			where price > #{LOWPRICE} and price < #{HIGHPRICE}
+		]]>
+		 -->
+	</select>
+	<select id="findProductListLikeKeyword" parameterType="string" resultType="ProductVO">
+		<include refid="selectProduct"/>
+		where name like '%' || #{value} || '%'
+	</select>
+	<insert id="register" parameterType="ProductVO">
+		insert into spring_product values(spring_product_seq.nextval, #{name}, #{maker}, #{price})
+	</insert>
+	<insert id="registerVer2" parameterType="ProductVO">
+		insert into spring_product values(spring_product_seq.nextval, #{name}, #{maker}, #{price})
+		<selectKey keyProperty="productNo" resultType="int" order="AFTER">
+			select spring_product_seq.currval from dual
+		</selectKey>
+	</insert>
+	<select id="getAllProductList" resultType="ProductVO">
+		<include refid="selectProduct"/>
+		order by product_no desc
+	</select>
+
 </mapper>
