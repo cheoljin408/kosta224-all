@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee; http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>springmvc01</display-name>
+  <welcome-file-list>
+    <welcome-file>home.do</welcome-file>
+  </welcome-file-list>
+  <!--
+  		DispatcherServlet은 자신의 spring 설정 파일을 [servlet-name]-servlet.xml로 찾아서 로드한다
+  		springmvc-servlet.xml이 스프링 설정 파일명이 된다
+  -->
+  <servlet>
+  	<servlet-name>springmvc</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>springmvc</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+</web-app>
