@@ -4,9 +4,11 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>springmvc01</title>
+	<title>result2</title>
 </head>
-<body>
-	<h3>${message}</h3>
+<body bgcolor="lime">
+	<a href="home.do">Home</a>
+	<br><br>
+	고객아이디 ${param.customerId} 고객이름 ${customerName}
 </body>
 </html>
