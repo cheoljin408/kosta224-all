@@ -1,11 +1,14 @@
 package org.kosta.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.kosta.model.CustomerDTO;
+import org.kosta.model.UserDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -66,5 +69,42 @@ public class MyTestController {
 		return "result4";
 	}
 	
+	// get 방식만 허용하고자 할 때 4.3 이상에서 아래 어노테이션을 지원
+	// @GetMapping("paramTest4.do")
+	@PostMapping("paramTest4.do")
+	// HandlerAdapter가 아래의 매개변수에 맞게 폼데이터를 객체로 생성해서 전달한다
+	public String paramTest4(CustomerDTO customerDTO) { // CustomerDTO 객체는 view에서 소문자로 시작하는 클래스명으로 공유
+		System.out.println(customerDTO);
+		return "result4";
+	}
+	
+	@PostMapping("redirectTest.do")
+	public String redirectTest(CustomerDTO customer) {
+		System.out.println(customer);
+		
+		// 아래 방식을 클라이언트(브라우저)가 직접 jsp에 접근할 수 없도록 환경(WEB-INF 아래)을 정의했으므로 error
+		// 이유는 Front Controller Pattern 모든 클라이언트의 요청은 DispatcherServlet을 통하도록 해야하므로
+		// return "redirect:result5.jsp";
+		return "redirect:testResult.do?customerId=" + customer.getId(); // springmvc에서 redirect방식으로 응답할 때는 서두에 redirect:을 명시한다
+	}
+	
+	@RequestMapping("testResult.do")
+	public String testResult(String customerId) {
+		System.out.println(customerId);
+		return "result5";
+	}
+	
+	@PostMapping("hasA-test.do")
+	public String testHasA(UserDTO user) {
+		System.out.println(user + "db insert");
+		return "result5";
+	}
+	
+	@PostMapping("login.do")
+	public String login(String id, String password, HttpSession session) {
+		System.out.println(id + " " + password + "로그인");
+		session.setAttribute("cvo", new CustomerDTO(id, "아이유", "분당"));
+		return "result6";
+	}
 	
 }

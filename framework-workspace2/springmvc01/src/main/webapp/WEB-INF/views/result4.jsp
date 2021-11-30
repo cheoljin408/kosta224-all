@@ -9,6 +9,6 @@
 <body bgcolor="lime">
 	<a href="home.do">Home</a>
 	<br><br>
-	등록완료
+	등록완료 ${customerDTO}
 </body>
 </html>
