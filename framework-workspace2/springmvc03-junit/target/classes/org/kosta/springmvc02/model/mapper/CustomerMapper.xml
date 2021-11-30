@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.springmvc02.model.mapper.CustomerMapper">
+	<select id="getTotalCustomerCount" resultType="int">
+		select count(*) from spring_customer
+	</select>
+	<select id="findCustomerById" parameterType="String" resultType="CustomerDTO">
+		select * from spring_customer where id=#{value}
+	</select>
+	<insert id="registerCustomer" parameterType="CustomerDTO">
+		insert into spring_customer values(#{id}, #{name}, #{address})
+	</insert>
+</mapper>
