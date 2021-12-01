@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee; http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>springmvc04-junit</display-name>
+  <welcome-file-list>
+    <welcome-file>home.do</welcome-file>
+  </welcome-file-list>
+  <!--
+  		DispatcherServlet은 자신의 spring 설정 파일을 [servlet-name]-servlet.xml로 찾아서 로드한다
+  		springmvc-servlet.xml이 스프링 설정 파일명이 된다
+  		DispatcherServlet: SpringMVC에서 제공하는 FrontControllerServlet
+  						   모든 클라이언트의 요청을 하나의 진입점으로 통합해서 처리
+  						   ( FrontController Design Pattern )
+  		FrontController인 DispatcherServlet은 자신의 설정파일(spring configuration)을
+  		서블릿 이름-servlet.xml로 찾아서 로드한다
+  		
+  		<load-on-startup>1</load-on-startup>
+  		Servlet LifeCycle에서 위 설정이 없으면 클라이언트의 첫번째 요청시에
+  		DispatcherServlet의 객체 생성 - init - service가 이루어지므로
+  		웹 어플리케이션 시작시점에 DispatcherServlet이 초기화되도록 설정한 것이다
+  		
+  		.do 스타일로 요청되면 DispatcherServlet이 처리하도록 url-pattern을 설정
+  -->
+  <servlet>
+  	<servlet-name>dispatcher</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>/WEB-INF/spring-*.xml</param-value>
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>dispatcher</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <filter>
+  <filter-name>EncodingFilter</filter-name>
+  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  <init-param>
+  <param-name>encoding</param-name>
+  <param-value>utf-8</param-value>
+  </init-param>
+  </filter>
+  <filter-mapping>
+  <filter-name>EncodingFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>
