@@ -28,7 +28,18 @@ th, td {
 		let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
-				
+				// alert(xhr.responseText);
+				let ja = JSON.parse(xhr.responseText);
+				// alert(ja[1].model);
+				let tb = "";
+				for(let i=0; i<ja.length; i++) {
+					tb += "<tr>";
+					tb += "<td>" + (i+1) + "</td>";
+					tb += "<td>" + ja[i].model + "</td>";
+					tb += "<td>" + ja[i].price + "</td>";
+					tb += "</tr>";
+				}
+				document.getElementById("carView").innerHTML = tb;
 			}
 		}//callback
 		xhr.open("get", "CarJSONServlet?maker=" + makerComp.value);

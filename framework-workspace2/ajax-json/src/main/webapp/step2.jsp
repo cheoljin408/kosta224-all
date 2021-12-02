@@ -10,7 +10,15 @@
 		let xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4&&xhr.status==200){
-			
+				let ja = JSON.parse(xhr.responseText);
+				// alert(ja.length);
+				let tb = "";
+				for(let i=0; i<ja.length; i++) {
+					tb += "<tr>"
+					tb += "<td>" + ja[i] + "</td>";
+					tb += "</tr>";
+				}
+				document.getElementById("player").innerHTML = tb;
 			}
 		}//callback
 		xhr.open("get", "JSONArrayServlet");
