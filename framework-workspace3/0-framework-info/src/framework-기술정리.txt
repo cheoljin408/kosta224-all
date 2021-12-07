@@ -6,8 +6,10 @@
 - Spring MVC(Spring Legacy project)
 - AJAX / jQuery / JSON / REST
 - Spring Boot
-- Thymeleaf
-- Spring Cloud (MSA), RestRemplate, JPA
+- AOP Transaction
+- Spring Security(인증, 인가, 비밀번호 암호화, csrf 해킹방지)
+- Spring Cloud (MSA), RestTemplate
+- Thymeleaf, JPA
 
 -----------------------------------------------------------
 
