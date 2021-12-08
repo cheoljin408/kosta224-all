@@ -10,7 +10,33 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>step27-ajax-json</title>
 <script type="text/javascript">
-
+	$(function() {
+		$("#jsonObjBtn").click(function() {
+			$.ajax({
+				type: "get",
+				url: "JSONServlet",
+				dataType: "json",
+				data: "command=getMemberInfo",
+				success: function(result) {
+					alert(result.name + " " + result.age);
+				}
+			});
+		});
+		
+		$("#jsonArrayBtn").click(function() {
+			$.ajax({
+				type: "get",
+				url: "JSONServlet",
+				dataType: "json",
+				data: "command=getMemberList",
+				success: function(result) {
+					for(let i=0; i<result.length; i++) {
+						alert(result[i]);
+					}
+				}
+			});
+		});
+	});
 </script>
 </head>
 <body>

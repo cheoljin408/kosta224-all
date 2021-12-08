@@ -11,7 +11,9 @@
 <title>step28-serialize</title>
 <script type="text/javascript">
 	$(document).ready(function() {
-		
+		$("#test").click(function() {
+			alert($("#f1").serialize());
+		});
 	});
 </script>
 </head>

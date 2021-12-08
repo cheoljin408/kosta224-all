@@ -11,7 +11,17 @@
 <title>step22-next-prev.jsp</title>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("#infoDiv .desc").click(function() {
+			$(this).next().text($(this).text());
+		});
 		
+		$("#deleteAllBtn").click(function() {
+			$("#infoDiv .desc").next().text("");
+		});
+		
+		$("#prevBtn").click(function() {
+			alert($(this).prev().prev().prev().text());
+		});
 	});
 </script>
 </head>

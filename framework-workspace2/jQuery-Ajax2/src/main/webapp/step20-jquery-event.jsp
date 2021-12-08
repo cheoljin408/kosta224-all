@@ -19,7 +19,18 @@
 		체크 상태가 아니면 alert() 으로 약관에 동의하셔야 다음페이지로 이동할 수 있습니다 메세지 보여주고
 		이동시키지 않는다  
  --%>
-
+<script type="text/javascript">
+	$(function() {
+		$(".testEvent").click(function(event) {
+			alert($("#termsChk").prop("checked"));
+			
+			if($("#termsChk").prop("checked") == false) {
+				alert("약관에 동의하셔야 다음 페이지로 이동할 수 있습니다");
+				event.preventDefault();
+			}
+		});
+	});
+</script>
 </div>
 </body>
 </html>

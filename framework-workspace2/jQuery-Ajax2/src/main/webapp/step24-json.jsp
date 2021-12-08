@@ -10,7 +10,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>step24-json</title>
 <script type="text/javascript">
-
+	function testJSONObj() {
+		// javascript object
+		let person = {
+				name: "아이유",
+				addr: "종로",
+				age: 28
+		};
+		
+		alert(person.name + " " + person.addr + " " + person.age);
+	}
+	
+	const testJSONArray = () => {
+		let pa = ["ioc", "di", "aop", "springmvc"];
+		
+		for(let i=0; i<pa.length; i++) {
+			alert(pa[i]);
+		}
+	}
 </script>
 </head>
 <body>

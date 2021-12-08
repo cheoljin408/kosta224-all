@@ -11,7 +11,23 @@
 <title>step26-ajax-post</title>
 <script type="text/javascript">
 	$(document).ready(function() {
-	
+		$("#ajaxBtn").click(function() {
+			let commentInfo = $("#comment").val();
+			if(commentInfo == "") {
+				alert("코멘트를 입력하세요");
+				return;
+			}
+			
+			$.ajax({
+				type: "post",
+				url: "CommentServlet",
+				data: "comment=" + commentInfo,
+				success: function(result) {
+					$("#resultView").html("<pre>" + result + "</pre>");
+					$("#comment").val("");
+				}
+			});
+		});
 	});
 </script>
 </head>

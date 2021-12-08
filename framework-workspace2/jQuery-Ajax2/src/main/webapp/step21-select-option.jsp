@@ -10,7 +10,31 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>step21-select-option</title>
 <script type="text/javascript">
-	
+	$(function() {
+		let arr = ["손흥민", "이강인", "황의조"];
+		$("#createOption").click(function() {
+			$("#friend").empty();
+			for(let i=0; i<arr.length; i++) {
+				$("#friend").append("<option value=" + arr[i] + ">" + arr[i] + "</option>");
+			}
+		});
+		
+		$("#deleteOption").click(function() {
+			$("#friend").empty();
+		});
+		
+		$("#setBtn").click(function() {
+			let set = new Set();
+			set.add("손흥민");
+			set.add("황의조");
+			set.add("황의조");
+			set.add("손흥민");
+			alert(set.size);
+			for(let data of set) {
+				alert(data);
+			}
+		});
+	});
 </script>
 </head>
 <body>

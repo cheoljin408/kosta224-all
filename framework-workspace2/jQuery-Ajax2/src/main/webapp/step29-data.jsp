@@ -11,7 +11,28 @@
 <title>jquery form 요소 제어</title>
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		$("#testBtn1").click(function() {
+			// id가 member인 요소의 data 속성 정보를 가져와본다
+			alert($("#member").data("id"));
+			alert($("#member").data("age"));
+		});
+		
+		$("#testBtn2").click(function() {
+			// id가 member인 요소의 data 속성 정보를 할당해본다
+			$("#member").data("id", "springking").data("age", 15);
+		});
+		
+		$("#testBtn3").click(function() {
+			// customer span에 data 속성을 동적으로 할당해본다
+			$("#customer").data("id", "jqueryking").data("detailInfo", {age:11, name:"황의찬"});
+		});
+		
+		$("#testBtn4").click(function() {
+			alert($("#customer").data("id"));
+			
+			let cus=$("#customer").data("detailInfo");
+			alert(cus.name + " " + cus.age);
+		});
 	});
 </script>
 </head>

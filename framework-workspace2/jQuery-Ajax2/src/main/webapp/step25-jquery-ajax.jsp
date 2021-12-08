@@ -11,7 +11,17 @@
 <title>step25-jquery-ajax</title>
 <script type="text/javascript">
 	$(document).ready(function() {
-	
+		$("#ajaxBtn").click(function() {
+			$.ajax({
+				type: "get",
+				url: "CountServlet",
+				data: "userId=javaking",
+				success: function(result) {
+					// alert(result);
+					$("#resultView").text(result);
+				}
+			});
+		});
 	});//ready
 </script>
 </head>
