@@ -113,6 +113,8 @@
 		
 		<%-- 한글로 된 일반 문자열 데이터 응답받는 테스트 --%>
 		<button type="button" id="AjaxBtn6">AjaxTest6</button><br>
+		<br><br>
+		<a href="employeeAjaxTestView">사원검색 페이지</a>
 	</div>
 </body>
 </html>

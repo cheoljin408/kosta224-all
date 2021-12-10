@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.myproject.model.mapper.EmployeeMapper">
+	<resultMap type="EmployeeDTO" id="employeeListRM">
+		<result column="dname" property="departmentDTO.dname"/>
+		<result column="loc" property="departmentDTO.loc"/>
+	</resultMap>
+	<select id="findEmployeeListByDeptNo" parameterType="int" resultMap="employeeListRM">
+		select e.empno, e.ename, d.dname, d.loc
+		from springboot_department d, springboot_employee e
+		where d.deptno = e.deptno
+		and d.deptno = #{value}
+	</select>
+	
+	<!-- Dynamic SQL Test -->
+	<select id="findEmplyeeListDynamicSQL" parameterType="EmployeeDTO" resultMap="employeeListRM">
+		select e.empno, e.ename, d.dname, d.loc
+		from springboot_department d, springboot_employee e
+		<where>
+			d.deptno = e.deptno
+			<if test="departmentDTO != null and departmentDTO.deptNo != 0">
+				and e.deptno = #{departmentDTO.deptNo}
+			</if>
+			<if test="ename != null and ename != ''">
+				and ename like '%' || #{ename} || '%'
+			</if>
+		</where>
+	</select>
+</mapper>
