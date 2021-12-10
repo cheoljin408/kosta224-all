@@ -1,0 +1,90 @@
+**Spring + Tiles 연동**
+Apache Tiles Framework : 템플릿 구성 프레임워크
+공통 페이지 요소의 중복을 줄이기 위해 런타임 시점에 전체 페이지로 조합하여 효율적으로 웹화면을 구성할 수 있음 
+
+**Tiles Framework 적용단계**
+1. Maven : pom.xml  
+ tiles dependency 추가 
+
+  <dependency>
+        <groupId>org.apache.tiles</groupId>
+        <artifactId>tiles-jsp</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tiles</groupId>
+        <artifactId>tiles-core</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+
+
+2.  tiles 설정 파일 정의 : webapp/WEB-INF/tiles-config.xml  
+
+
+3. Spring과 Tiles 연동을 위한 설정 - Spring Legacy : xml , SpringBoot : Java Config 
+
+if( Spring Legacy 인 경우에는  아래와 같이 설정 ) 
+		spring web config xml  :
+		InternalResourceViewResolver 에 아래 order를 설정 
+		<property name="order" value="1"/>
+		<!-- TilesViewResolver 설정
+			  : 일반 JSP 응답이 아니라 Tiles Layout이 적용된 화면으로 응답하기 위해 설정 	
+		 -->
+		<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+		<property name="order" value="0"/>
+		</bean>
+		
+		<!--  Tiles Framework 설정
+			   : spring framework에서 Tiles Config xml 을 로딩하기 위한 설정 
+		 -->
+		
+		<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" >
+		<property name="definitions">
+		<list> <value>/WEB-INF/tiles-config.xml</value></list> 
+		</property>
+		</bean>
+
+if(SpringBoot 인  경우에는 아래외 같이 설정) 
+    package org.kosta.myproject;
+    
+	@Configuration // Java Class 기반의 Spring 환경설정 클래스임을 스프링 컨테이너에 알리는 어노테이션 
+    public class TilesConfiguration {
+    // @Bean : bean 생성을 위한 어노테이션 : 외부라이브러리를 통해 bean 생성하고자 할 때 사용하는 어노테이션
+    //			 리턴하는 객체가 bean으로 등록된다 
+    // @Component : 개발자가 작성한 클래스를 bean으로 등록할 때 사용 
+	@Bean  
+	public UrlBasedViewResolver tilesViewResolver() {
+		UrlBasedViewResolver tilesViewResolver = new UrlBasedViewResolver();
+		tilesViewResolver.setViewClass(TilesView.class);
+		return tilesViewResolver;
+	}
+	@Bean
+	public TilesConfigurer tilesConfigurer() {
+		TilesConfigurer tilesConfigurer = new TilesConfigurer();
+		String[] defs = { "WEB-INF/tiles-config.xml" };
+		tilesConfigurer.setDefinitions(defs);
+		return tilesConfigurer;
+	}
+}
+
+4. 재사용 위한 템플릿 구성 jsp를 정의 
+   webapp\WEB-INF\views\templates\layout.jsp ( 전체 레이아웃 구성 파일 ) 및 header,left,right, footer jsp 
+   src\main\resources\static\css\home.css 를 위치시킨다  
+   
+
+5. Controller에 적용해 본다 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

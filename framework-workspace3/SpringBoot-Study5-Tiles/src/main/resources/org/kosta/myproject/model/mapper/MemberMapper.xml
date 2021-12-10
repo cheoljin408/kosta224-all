@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.myproject.model.mapper.MemberMapper">
+	<sql id="selectMember">
+	select id,password,name,address 
+	from spring_member
+</sql>
+<select id="findMemberById" resultType="MemberDTO">
+	<include refid="selectMember"/>
+	where id=#{value}
+</select>
+<select id="getMemberAddressKind" resultType="string">
+	select distinct address from spring_member
+</select>
+<select id="findMemberByAddress" resultType="MemberDTO">
+	<include refid="selectMember"/>
+	where address=#{value}
+</select>
+</mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
